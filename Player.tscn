@@ -7,12 +7,14 @@ size = Vector2(12, 20)
 
 [sub_resource type="QuadMesh" id="QuadMesh_nibuc"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jump_timer")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jump_timer", "jump_buffer_timer")]
 script = ExtResource("1_i1o7x")
 jump_speed = 300.0
 jump_length = 0.15
 jump_end_force = 100.0
+jump_buffer = 1.0
 jump_timer = NodePath("JumpLength")
+jump_buffer_timer = NodePath("JumpBuffer")
 speed = 400.0
 gravity = 10.0
 friction = 5000.0
@@ -28,4 +30,7 @@ mesh = SubResource("QuadMesh_nibuc")
 
 [node name="JumpLength" type="Timer" parent="."]
 
+[node name="JumpBuffer" type="Timer" parent="."]
+
 [connection signal="timeout" from="JumpLength" to="." method="_on_jump_length_timeout"]
+[connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]

@@ -3,10 +3,13 @@ extends CharacterBody2D
 @export var jump_speed : float
 @export var jump_length : float
 @export var jump_end_force : float
+@export var jump_buffer : float
 
 var is_jumping : bool
+var can_jump : bool
 
 @export var jump_timer : Timer
+@export var jump_buffer_timer : Timer
 
 @export var speed : float
 
@@ -20,8 +23,13 @@ func _process(delta: float) -> void:
 	
 	velocity.y += gravity
 	
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
+	if Input.is_action_just_pressed("Jump"):
+		can_jump = true
+		jump_buffer_timer.start(jump_buffer)
+	
+	if (Input.is_action_just_pressed("Jump") or can_jump) and is_on_floor():
 		is_jumping = true
+		can_jump = false
 		jump_timer.start(jump_length)
 	if Input.is_action_just_released("Jump"):
 		is_jumping = false
@@ -47,6 +55,5 @@ func _process(delta: float) -> void:
 func _on_jump_length_timeout() -> void:
 	is_jumping = false
 
-
 func _on_jump_buffer_timeout() -> void:
-	pass # Replace with function body.
+	can_jump = false
