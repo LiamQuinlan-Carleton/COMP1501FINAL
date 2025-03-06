@@ -46,14 +46,22 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("Right") or Input.is_action_pressed("Left"):
 		velocity.x = speed * direction
 	elif velocity.x < -friction * delta or velocity.x > friction * delta:
-		velocity.x -= direction * friction * delta
+		if is_on_floor:
+			velocity.x -= direction * friction * delta
+		else:
+			velocity.x -= direction * delta
 	else:
 		velocity.x = 0
 	
 	move_and_slide()
+
 
 func _on_jump_length_timeout() -> void:
 	is_jumping = false
 
 func _on_jump_buffer_timeout() -> void:
 	can_jump = false
+
+
+func _on_button_pressed() -> void:
+	global_position = Vector2(550,330)
