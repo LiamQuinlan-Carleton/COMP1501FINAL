@@ -1,32 +1,79 @@
-[gd_scene load_steps=3 format=3 uid="uid://bifwj2f8wga8b"]
+[gd_scene load_steps=7 format=3 uid="uid://bifwj2f8wga8b"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_6dd6w"]
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_xc4sc"]
 [ext_resource type="PackedScene" uid="uid://cj2ntaihy7cuq" path="res://Platform.tscn" id="2_ljglp"]
+[ext_resource type="PackedScene" uid="uid://nx2dfj8qlnhb" path="res://wall.tscn" id="3_j1ud2"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_pl6gq"]
+action = &"interact"
+
+[sub_resource type="Shortcut" id="Shortcut_njfcv"]
+events = [SubResource("InputEventAction_pl6gq")]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_6dd6w")
 
 [node name="Platform5" parent="." instance=ExtResource("2_ljglp")]
-position = Vector2(550, 417)
+position = Vector2(582, 391)
 
-[node name="Player" parent="." instance=ExtResource("1_xc4sc")]
-position = Vector2(554, 337)
+[node name="Player" parent="." node_paths=PackedStringArray("wall_jump_timer") instance=ExtResource("1_xc4sc")]
+position = Vector2(593, 336)
+jump_buffer = 0.5
+wall_jump_timer = NodePath("../wall_jump_timer")
+speed = 400.0
+wind_resistance = 2500.0
 
 [node name="Platform" parent="." instance=ExtResource("2_ljglp")]
-position = Vector2(346, 381)
+position = Vector2(385, 342)
+scale = Vector2(0.81, 0.81)
 
 [node name="Platform2" parent="." instance=ExtResource("2_ljglp")]
-position = Vector2(643, 417)
+position = Vector2(336, 501)
+scale = Vector2(2, 2)
 
 [node name="Button" type="Button" parent="."]
 offset_right = 8.0
 offset_bottom = 8.0
 action_mode = 0
+shortcut = SubResource("Shortcut_njfcv")
 text = "Reset"
 
 [node name="Platform4" parent="." instance=ExtResource("2_ljglp")]
-position = Vector2(217, 311)
+position = Vector2(281, 322)
 
 [node name="Platform3" parent="." instance=ExtResource("2_ljglp")]
-position = Vector2(823, 355)
+position = Vector2(596, 557)
 
+[node name="Crouching" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Not Crouching
+"
+
+[node name="Wall" parent="." instance=ExtResource("3_j1ud2")]
+position = Vector2(848, 472)
+scale = Vector2(0.86, 0.86)
+
+[node name="Platform6" parent="." instance=ExtResource("2_ljglp")]
+position = Vector2(84, 411)
+
+[node name="Platform7" parent="." instance=ExtResource("2_ljglp")]
+position = Vector2(189, 454)
+rotation = 0.584685
+scale = Vector2(1.54, 1.54)
+
+[node name="Wall2" parent="." instance=ExtResource("3_j1ud2")]
+position = Vector2(751, 325)
+scale = Vector2(0.86, 0.86)
+
+[node name="Wall3" parent="." instance=ExtResource("3_j1ud2")]
+position = Vector2(898, 254)
+scale = Vector2(0.86, 0.86)
+
+[node name="wall_jump_timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="is_crouching" from="Player" to="." method="_on_player_is_crouching"]
 [connection signal="pressed" from="Button" to="Player" method="_on_button_pressed"]
+[connection signal="timeout" from="wall_jump_timer" to="Player" method="_on_wall_jump_timer_timeout"]
