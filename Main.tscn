@@ -7,6 +7,21 @@
 
 [node name="Player" parent="." instance=ExtResource("1_xc4sc")]
 position = Vector2(553, 324)
+acceleration = 5000.0
+floor_friction = 2500.0
 
 [node name="Platform" parent="." instance=ExtResource("2_ljglp")]
-position = Vector2(555, 416)
+position = Vector2(-7, 300)
+scale = Vector2(10, 60)
+
+[node name="Platform2" parent="." instance=ExtResource("2_ljglp")]
+position = Vector2(325, 596)
+scale = Vector2(40, 10)
+
+[node name="Platform3" parent="." instance=ExtResource("2_ljglp")]
+position = Vector2(849, 652)
+scale = Vector2(40, 10)
+
+[node name="Platform4" parent="." instance=ExtResource("2_ljglp")]
+position = Vector2(1169, 333)
+scale = Vector2(10, 50)

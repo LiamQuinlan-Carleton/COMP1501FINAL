@@ -13,11 +13,10 @@ jump_speed = 300.0
 jump_length = 0.15
 jump_end_force = 100.0
 jump_buffer = 1.0
-jump_timer = NodePath("JumpLength")
-jump_buffer_timer = NodePath("JumpBuffer")
 speed = 400.0
 gravity = 10.0
-friction = 5000.0
+jump_timer = NodePath("JumpLength")
+jump_buffer_timer = NodePath("JumpBuffer")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
