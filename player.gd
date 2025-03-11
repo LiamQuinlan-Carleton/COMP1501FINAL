@@ -71,7 +71,8 @@ func _process(delta: float) -> void:
 		if velocity.x < -speed:
 			velocity.x = -speed
 	elif velocity.x < -floor_friction * delta or velocity.x > floor_friction * delta:
-		velocity.x -= direction * floor_friction * delta
+		if is_on_floor():
+			velocity.x -= direction * floor_friction * delta
 	else:
 		velocity.x = 0
 	
