@@ -32,7 +32,7 @@ sources/0 = SubResource("TileSetAtlasSource_yk6l6")
 
 [node name="Player" parent="." instance=ExtResource("1_xc4sc")]
 position = Vector2(553, 324)
-acceleration = 5000.0
+acceleration = 2000.0
 floor_friction = 2500.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
