@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+#HP
+@export var health : int = 3
+
 #Movement "Feel" Variables
 
 #Jump
@@ -14,11 +17,15 @@ extends CharacterBody2D
 @export var floor_friction : float
 @export var air_resistance : float
 
+#Shoot
+@export var shoot_cooldown : float
+
 #Misc
 @export var gravity : float
 
 #Timer Nodes
 @export var jump_timer : Timer #Time with constant jump velocity
+@export var shoot_timer : Timer #Time between shooting bullets
 
 #Player can press jump before touching ground and still jump once they land. 
 #This is the time allowed between pressing button and jumping
@@ -28,12 +35,17 @@ extends CharacterBody2D
 #Logic variables
 var is_jumping : bool #Is actively holding space to move upwards. Is false when space is let go or jump time runs out
 var want_jump : bool #True when player has pressed space. False when jump starts or after buffer window passes
-var can_jump: bool #True  when player is able to jump
+var can_jump : bool #True when player is able to jump
+var can_shoot : bool = true #True when player isn't reloading or delayed between shots
 
 var l_dir : int = 1 #last direction key pressed. -1 = Left, 1 = Right
 
+#Grab hp label node
+@onready var hp = $"HP Label"
+
 #The code bellow is in no way organized or easy to read. I apologize in advance.
 func _process(delta: float) -> void:
+	hp.text = "Current HP: " + str(health)
 	
 	velocity.y += gravity
 	
@@ -80,8 +92,9 @@ func _process(delta: float) -> void:
 	else:
 		apply_friction(floor_friction, air_resistance, is_on_floor(), delta)
 	
+	Global.player_position = global_position
+	
 	move_and_slide()
-
 
 func apply_friction(f_frict : float, a_resist : float, floor : bool, delta : float):
 	
@@ -97,8 +110,24 @@ func apply_friction(f_frict : float, a_resist : float, floor : bool, delta : flo
 	if dir * velocity.x < 0:
 		velocity.x = 0
 
+# Handle inputs
+func _input(event: InputEvent) -> void:
+	# Handle's shooting input
+	if event.is_action_pressed("Shoot"):
+		if can_shoot:
+			Global.shoot.emit()
+			can_shoot = false
+			shoot_timer.start(shoot_cooldown)
+
 func _on_jump_length_timeout() -> void:
 	is_jumping = false
 
 func _on_jump_buffer_timeout() -> void:
 	want_jump = false
+
+func _on_shoot_cooldown_timeout() -> void:
+	can_shoot = true
+
+#Called when enemy deals damage to player
+func take_damage(amount):
+	health -= amount
