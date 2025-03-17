@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwd83faj5vqrq"]
+
+[ext_resource type="Script" path="res://enemy_bullet.gd" id="1_kovxd"]
+[ext_resource type="Texture2D" uid="uid://c0lxs2ch7it2b" path="res://icon.svg" id="1_l0b0q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gquyj"]
+size = Vector2(64, 3.5)
+
+[node name="Enemy Bullet" type="Node2D"]
+
+[node name="Enemy Bullet" type="Area2D" parent="."]
+script = ExtResource("1_kovxd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Bullet"]
+position = Vector2(54, 0.25)
+shape = SubResource("RectangleShape2D_gquyj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy Bullet"]
+position = Vector2(54, 0.25)
+scale = Vector2(0.5, 0.0273438)
+texture = ExtResource("1_l0b0q")
+
+[connection signal="body_entered" from="Enemy Bullet" to="Enemy Bullet" method="_on_body_entered"]
