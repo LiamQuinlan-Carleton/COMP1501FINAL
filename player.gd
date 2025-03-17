@@ -90,7 +90,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_pressed("Right") or Input.is_action_pressed("Left"):
 		if sign(velocity.x) * velocity.x <= speed:
-			velocity.x += acceleration * sign(velocity.x) * delta
+			velocity.x += acceleration * l_dir * delta
 			if velocity.x > speed:
 				velocity.x = speed
 			if velocity.x < -speed:
