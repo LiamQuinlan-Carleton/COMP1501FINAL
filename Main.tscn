@@ -1,8 +1,16 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=6 format=4 uid="uid://bifwj2f8wga8b"]
+=======
+[gd_scene load_steps=7 format=4 uid="uid://bifwj2f8wga8b"]
+>>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_xc4sc"]
 [ext_resource type="Texture2D" uid="uid://c0lxs2ch7it2b" path="res://icon.svg" id="3_0it4c"]
 [ext_resource type="Script" path="res://grapple.gd" id="3_rkjoq"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="PackedScene" uid="uid://1asumj6anpch" path="res://zipline.tscn" id="4_7dplb"]
+>>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yk6l6"]
 texture = ExtResource("3_0it4c")
@@ -58,3 +66,11 @@ texture = ExtResource("3_0it4c")
 
 [node name="Line2D" type="Line2D" parent="Grapple"]
 points = PackedVector2Array(100, 75, 0, 0)
+<<<<<<< Updated upstream
+=======
+
+[node name="Zipline" parent="." groups=["Zipline"] instance=ExtResource("4_7dplb")]
+position = Vector2(904, 372)
+rotation = -0.753982
+scale = Vector2(2, 1)
+>>>>>>> Stashed changes

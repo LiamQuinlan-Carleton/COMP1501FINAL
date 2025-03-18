@@ -33,13 +33,24 @@ var can_jump: bool #True  when player is able to jump
 
 var l_dir : int = 1 #last direction key pressed. -1 = Left, 1 = Right
 
+<<<<<<< Updated upstream
+=======
+#Zipline variables
+var in_zipline_area = false
+var zipline_area : PathFollow2D
+var on_zipline = false
+@onready var ziplines = get_tree().get_nodes_in_group("Zipline")
+@onready var main_node = get_parent()
+
+>>>>>>> Stashed changes
 #The code bellow is in no way organized or easy to read. I apologize in advance.
 func _process(delta: float) -> void:
 	
-	velocity.y += gravity
-	
-	if Input.is_action_pressed("Shift"):
-		velocity.x -= 1000 * delta
+	# don't fall while on a zipline
+	if is_instance_of(get_parent(), PathFollow2D):
+		velocity.y = 0
+	else:
+		velocity.y += gravity
 	
 	#Jump control
 	if Input.is_action_just_pressed("Jump"):
@@ -99,6 +110,17 @@ func _process(delta: float) -> void:
 		apply_friction(floor_friction, air_resistance, sliding_friction, is_on_floor(), delta)
 	
 	move_and_slide()
+	
+	# if within zipline's interaction area
+	if in_zipline_area:
+		# when holding interact, player follows zipline's path
+		if Input.is_action_pressed("Zipline"):
+			reparent(zipline_area)
+			on_zipline = true
+	# when releasing interact, player reparents itself to main, no longer follows zipline's path
+	if Input.is_action_just_released("Zipline"):
+		reparent(main_node)
+		on_zipline = false
 
 
 func apply_friction(f_frict : float, a_resist : float, s_frict : float, floor : bool, delta : float):
@@ -122,3 +144,23 @@ func _on_jump_length_timeout() -> void:
 
 func _on_jump_buffer_timeout() -> void:
 	want_jump = false
+<<<<<<< Updated upstream
+=======
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	in_zipline_area = true;
+	
+	# set zipline_area to the area of the zipline the player's overlapping with
+	var area_array = $Area2D.get_overlapping_areas()
+	for a in area_array:
+		for b in a.get_parent().get_children() :
+			if is_instance_of(b, Path2D) :
+				for c in b.get_children():
+					if is_instance_of(c, PathFollow2D):
+						zipline_area = c
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	in_zipline_area = false;
+>>>>>>> Stashed changes
