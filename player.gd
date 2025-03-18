@@ -100,6 +100,7 @@ func _process(delta: float) -> void:
 		floor_max_angle = 0
 	if Input.is_action_just_released("crouch"):
 		scale.y = 1
+		position.y -= 30
 		floor_stop_on_slope = true
 		floor_max_angle = 45
 	#Run control
