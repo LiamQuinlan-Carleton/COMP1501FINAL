@@ -33,8 +33,6 @@ var can_jump: bool #True  when player is able to jump
 
 var l_dir : int = 1 #last direction key pressed. -1 = Left, 1 = Right
 
-<<<<<<< Updated upstream
-=======
 #Zipline variables
 var in_zipline_area = false
 var zipline_area : PathFollow2D
@@ -42,7 +40,6 @@ var on_zipline = false
 @onready var ziplines = get_tree().get_nodes_in_group("Zipline")
 @onready var main_node = get_parent()
 
->>>>>>> Stashed changes
 #The code bellow is in no way organized or easy to read. I apologize in advance.
 func _process(delta: float) -> void:
 	
@@ -144,8 +141,6 @@ func _on_jump_length_timeout() -> void:
 
 func _on_jump_buffer_timeout() -> void:
 	want_jump = false
-<<<<<<< Updated upstream
-=======
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
@@ -163,4 +158,3 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	in_zipline_area = false;
->>>>>>> Stashed changes
