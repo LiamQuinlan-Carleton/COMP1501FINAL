@@ -18,6 +18,8 @@ func _process(delta: float) -> void:
 	# if PathFollow2D has Player as a child, start its progress
 	if (($Path2D/PathFollow2D.get_children()).size() > 1):     # WITH SPRITE, CHANGE NUMBER WHEN REMOVING SPRITE
 		var player = $Path2D/PathFollow2D.get_child(1)
+		player.velocity.x = 0
+		print(zipline.progress)
 		
 		# zipline progress only moves when player hasn't reached the end yet
 		if player.global_position.x +10 < self.global_position.x :

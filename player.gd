@@ -96,11 +96,12 @@ func _process(delta: float) -> void:
 		velocity.y = -jump_speed
 	if Input.is_action_just_pressed("crouch"):
 		scale.y = 0.5
+		position.y += 15
 		floor_stop_on_slope = false
 		floor_max_angle = 0
 	if Input.is_action_just_released("crouch"):
 		scale.y = 1
-		position.y -= 30
+		position.y -= 15
 		floor_stop_on_slope = true
 		floor_max_angle = 45
 	#Run control
@@ -114,7 +115,7 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_released("Left") and Input.is_action_pressed("Right"):
 		l_dir = 1
 	
-	if Input.is_action_pressed("Right") or Input.is_action_pressed("Left"):
+	if (Input.is_action_pressed("Right") or Input.is_action_pressed("Left")) and !on_zipline:
 		if sign(velocity.x) * velocity.x <= speed:
 			velocity.x += acceleration * l_dir * delta
 			if velocity.x > speed:
