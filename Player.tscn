@@ -26,11 +26,9 @@ jump_buffer_timer = NodePath("JumpBuffer")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -23)
 shape = SubResource("RectangleShape2D_t478q")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(0, -23)
 scale = Vector2(12, 46)
 mesh = SubResource("QuadMesh_nibuc")
 
@@ -49,7 +47,6 @@ offset_bottom = -69.0
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -23)
 shape = SubResource("RectangleShape2D_eqt3d")
 
 [connection signal="timeout" from="JumpLength" to="." method="_on_jump_length_timeout"]
