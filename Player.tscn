@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnlswq05iqbuc"]
+[gd_scene load_steps=5 format=3 uid="uid://bnlswq05iqbuc"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_i1o7x"]
 
@@ -6,6 +6,9 @@
 size = Vector2(12, 46)
 
 [sub_resource type="QuadMesh" id="QuadMesh_nibuc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqt3d"]
+size = Vector2(20, 54)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jump_timer", "shoot_timer", "jump_buffer_timer")]
 script = ExtResource("1_i1o7x")
@@ -43,6 +46,14 @@ offset_top = -92.0
 offset_right = -81.0
 offset_bottom = -69.0
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -23)
+shape = SubResource("RectangleShape2D_eqt3d")
+
 [connection signal="timeout" from="JumpLength" to="." method="_on_jump_length_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

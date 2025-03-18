@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://bifwj2f8wga8b"]
+[gd_scene load_steps=9 format=4 uid="uid://bifwj2f8wga8b"]
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_xc4sc"]
 [ext_resource type="Texture2D" uid="uid://c0lxs2ch7it2b" path="res://icon.svg" id="3_0it4c"]
 [ext_resource type="Script" path="res://grapple.gd" id="3_rkjoq"]
 [ext_resource type="PackedScene" uid="uid://c8j55ah1v7fy2" path="res://spawner.tscn" id="3_yud08"]
 [ext_resource type="PackedScene" uid="uid://bjv4ayd50t6r0" path="res://enemy.tscn" id="4_wkeih"]
+[ext_resource type="PackedScene" uid="uid://djxscqvgw0uy6" path="res://zipline.tscn" id="6_2dxw8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yk6l6"]
 texture = ExtResource("3_0it4c")
@@ -71,3 +72,7 @@ position = Vector2(391, 434)
 
 [node name="Enemy3" parent="." instance=ExtResource("4_wkeih")]
 position = Vector2(202, 382)
+
+[node name="Zipline" parent="." instance=ExtResource("6_2dxw8")]
+position = Vector2(840, 450)
+rotation = -0.755728
