@@ -49,6 +49,10 @@ offset_bottom = -69.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_eqt3d")
 
+[node name="CheckCeiling" type="RayCast2D" parent="."]
+target_position = Vector2(0, -55)
+collide_with_areas = true
+
 [connection signal="timeout" from="JumpLength" to="." method="_on_jump_length_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]

@@ -40,7 +40,9 @@ var can_jump : bool #True when player is able to jump
 var can_shoot : bool = true #True when player isn't reloading or delayed between shots
 
 var l_dir : int = 1 #last direction key pressed. -1 = Left, 1 = Right
-
+var checking_above : bool = false # True if crouched and currently cant uncrouch, false if player can
+var crouching: bool = false # True if the player is crouching, false otherwise
+var want_to_stand: bool = false # True if the player wants to uncrouch
 #Grab hp label node
 @onready var hp = $"HP Label"
 
@@ -94,16 +96,28 @@ func _process(delta: float) -> void:
 		
 	if is_jumping:
 		velocity.y = -jump_speed
+	# Starts Crouch.
 	if Input.is_action_just_pressed("crouch"):
 		scale.y = 0.5
 		position.y += 15
 		floor_stop_on_slope = false
 		floor_max_angle = 0
+		crouching = true
+	if $CheckCeiling.is_colliding():
+			checking_above = true
 	if Input.is_action_just_released("crouch"):
-		scale.y = 1
-		position.y -= 15
-		floor_stop_on_slope = true
-		floor_max_angle = 45
+		want_to_stand = true
+		if $CheckCeiling.is_colliding():
+			checking_above = true
+		else: 
+			reset_after_crouch()
+			want_to_stand = false
+		#floor_max_angle = 45 Supposed to change sliding on slopes, broke the walls (fix later)
+	if checking_above and crouching and want_to_stand:
+		if not $CheckCeiling.is_colliding():
+			reset_after_crouch()
+			checking_above = false 
+			want_to_stand = false
 	#Run control
 	if Input.is_action_just_pressed("Right"):
 		l_dir= 1
@@ -180,6 +194,12 @@ func _on_shoot_cooldown_timeout() -> void:
 func take_damage(amount):
 	health -= amount
 
+# Puts player in proper position when standing back up
+func reset_after_crouch():
+	scale.y = 1
+	position.y -= 15
+	floor_stop_on_slope = true
+	crouching = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	in_zipline_area = true;
