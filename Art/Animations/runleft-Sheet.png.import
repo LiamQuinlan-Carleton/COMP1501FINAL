@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgicop8muvnsn"
-path="res://.godot/imported/slideTiles.png-07703db318fa4927768aea06d847c399.ctex"
+uid="uid://cypvruxfuh55e"
+path="res://.godot/imported/runleft-Sheet.png-9cd4aa1dce99f6e50c56504a02b1e9d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://slideTiles.png"
-dest_files=["res://.godot/imported/slideTiles.png-07703db318fa4927768aea06d847c399.ctex"]
+source_file="res://Art/Animations/runleft-Sheet.png"
+dest_files=["res://.godot/imported/runleft-Sheet.png-9cd4aa1dce99f6e50c56504a02b1e9d0.ctex"]
 
 [params]
 

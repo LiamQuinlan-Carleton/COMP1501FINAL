@@ -120,15 +120,17 @@ func _process(delta: float) -> void:
 			want_to_stand = false
 	#Run control
 	if Input.is_action_just_pressed("Right"):
+		$AnimatedSprite2D.play("Run Right")
 		l_dir= 1
 	elif Input.is_action_just_released("Right") and Input.is_action_pressed("Left"):
 		l_dir = -1
-	
+		$AnimatedSprite2D.play("Run Left")
 	if Input.is_action_just_pressed("Left"):
 		l_dir = -1
+		$AnimatedSprite2D.play("Run Left")
 	elif Input.is_action_just_released("Left") and Input.is_action_pressed("Right"):
 		l_dir = 1
-	
+		$AnimatedSprite2D.play("Run Right")
 	if (Input.is_action_pressed("Right") or Input.is_action_pressed("Left")) and !on_zipline:
 		if sign(velocity.x) * velocity.x <= speed:
 			velocity.x += acceleration * l_dir * delta
