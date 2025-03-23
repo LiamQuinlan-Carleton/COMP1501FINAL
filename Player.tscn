@@ -18,6 +18,10 @@ jump_length = 0.15
 jump_end_force = 100.0
 jump_buffer = 1.0
 speed = 400.0
+acceleration = 2000.0
+floor_friction = 2500.0
+air_resistance = 250.0
+sliding_friction = 250.0
 shoot_cooldown = 0.2
 gravity = 10.0
 jump_timer = NodePath("JumpLength")
@@ -52,6 +56,8 @@ shape = SubResource("RectangleShape2D_eqt3d")
 [node name="CheckCeiling" type="RayCast2D" parent="."]
 target_position = Vector2(0, -55)
 collide_with_areas = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="timeout" from="JumpLength" to="." method="_on_jump_length_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
