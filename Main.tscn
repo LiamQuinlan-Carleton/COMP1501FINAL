@@ -1,12 +1,19 @@
-[gd_scene load_steps=10 format=4 uid="uid://bifwj2f8wga8b"]
+[gd_scene load_steps=12 format=4 uid="uid://bifwj2f8wga8b"]
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_xc4sc"]
+[ext_resource type="Texture2D" uid="uid://bgicop8muvnsn" path="res://slideTiles.png" id="2_gwjk7"]
 [ext_resource type="Texture2D" uid="uid://cbbyapugrgs3" path="res://buildingTileset.png" id="2_rrciu"]
 [ext_resource type="Texture2D" uid="uid://c0lxs2ch7it2b" path="res://icon.svg" id="3_0it4c"]
 [ext_resource type="Script" path="res://grapple.gd" id="3_rkjoq"]
 [ext_resource type="PackedScene" uid="uid://c8j55ah1v7fy2" path="res://spawner.tscn" id="3_yud08"]
 [ext_resource type="PackedScene" uid="uid://bjv4ayd50t6r0" path="res://enemy.tscn" id="4_wkeih"]
 [ext_resource type="PackedScene" uid="uid://djxscqvgw0uy6" path="res://zipline.tscn" id="6_2dxw8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_te3m2"]
+texture = ExtResource("2_gwjk7")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, -8, 8, 8, -8)
+1:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yp1gk"]
 texture = ExtResource("2_rrciu")
@@ -36,6 +43,7 @@ texture = ExtResource("2_rrciu")
 [sub_resource type="TileSet" id="TileSet_x3f40"]
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_yp1gk")
+sources/0 = SubResource("TileSetAtlasSource_te3m2")
 
 [node name="Main" type="Node"]
 
