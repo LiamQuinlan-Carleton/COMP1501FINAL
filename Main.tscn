@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=4 uid="uid://bifwj2f8wga8b"]
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_xc4sc"]
-[ext_resource type="Texture2D" path="res://slideTiles.png" id="2_gwjk7"]
-[ext_resource type="Texture2D" path="res://buildingTileset.png" id="2_rrciu"]
+[ext_resource type="Texture2D" uid="uid://1eumra722j5d" path="res://Art/TileSets/buildingTileset.png" id="2_gwjk7"]
+[ext_resource type="Texture2D" uid="uid://dvpdfehv8hm1w" path="res://Art/TileSets/slideTiles.png" id="2_rrciu"]
 [ext_resource type="Texture2D" uid="uid://c0lxs2ch7it2b" path="res://icon.svg" id="3_0it4c"]
 [ext_resource type="Script" path="res://grapple.gd" id="3_rkjoq"]
 [ext_resource type="PackedScene" uid="uid://c8j55ah1v7fy2" path="res://spawner.tscn" id="3_yud08"]
