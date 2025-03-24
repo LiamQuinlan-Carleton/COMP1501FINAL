@@ -43,8 +43,13 @@ var l_dir : int = 1 #last direction key pressed. -1 = Left, 1 = Right
 var checking_above : bool = false # True if crouched and currently cant uncrouch, false if player can
 var crouching: bool = false # True if the player is crouching, false otherwise
 var want_to_stand: bool = false # True if the player wants to uncrouch
+
 #Grab hp label node
 @onready var hp = $"HP Label"
+#Grab animatedsprite2d node
+@onready var animation = $AnimatedSprite2D
+#Grab player collisionshape
+@onready var player_hitbox = $CollisionShape2D
 
 #Zipline variables
 var in_zipline_area = false
@@ -72,6 +77,12 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Jump"):
 		want_jump = true
 		jump_buffer_timer.start(jump_buffer)
+		if (l_dir > 0):
+			animation.frame = 0
+			animation.play("Jump Right")
+		else:
+			animation.frame = 0
+			animation.play("Jump Left")
 	
 	if Input.is_action_just_released("Jump"):
 		want_jump = false
@@ -96,13 +107,23 @@ func _physics_process(delta: float) -> void:
 		
 	if is_jumping:
 		velocity.y = -jump_speed
-	# Starts Crouch.
+	
+	#Crouch control
 	if Input.is_action_just_pressed("crouch"):
-		scale.y = 0.5
-		position.y += 14
+		if (l_dir > 0):
+			animation.play("Slide Right Start")
+		else:
+			animation.play("Slide Left Start")
+		player_hitbox.scale.y = 0.5
+		player_hitbox.position.y += 14
 		floor_stop_on_slope = false
 		#floor_max_angle = 0
 		crouching = true
+		await get_tree().create_timer(0.5).timeout
+		if (l_dir > 0):
+			animation.play("Slide Right")
+		else:
+			animation.play("Slide Left")
 	if $CheckCeiling.is_colliding():
 			checking_above = true
 	if Input.is_action_just_released("crouch"):
@@ -118,19 +139,24 @@ func _physics_process(delta: float) -> void:
 			reset_after_crouch()
 			checking_above = false 
 			want_to_stand = false
+	
 	#Run control
 	if Input.is_action_just_pressed("Right"):
-		$AnimatedSprite2D.play("Run Right")
 		l_dir= 1
+		if !crouching and is_on_floor():
+			animation.play("Run Right")
 	elif Input.is_action_just_released("Right") and Input.is_action_pressed("Left"):
 		l_dir = -1
-		$AnimatedSprite2D.play("Run Left")
+		if !crouching and is_on_floor():
+			animation.play("Run Left")
 	if Input.is_action_just_pressed("Left"):
 		l_dir = -1
-		$AnimatedSprite2D.play("Run Left")
+		if !crouching and is_on_floor():
+			animation.play("Run Left")
 	elif Input.is_action_just_released("Left") and Input.is_action_pressed("Right"):
 		l_dir = 1
-		$AnimatedSprite2D.play("Run Right")
+		if !crouching and is_on_floor():
+			animation.play("Run Right")
 	if (Input.is_action_pressed("Right") or Input.is_action_pressed("Left")) and !on_zipline:
 		if sign(velocity.x) * velocity.x <= speed:
 			velocity.x += acceleration * l_dir * delta
@@ -198,8 +224,8 @@ func take_damage(amount):
 
 # Puts player in proper position when standing back up
 func reset_after_crouch():
-	scale.y = 1
-	position.y -= 14
+	player_hitbox.scale.y = 1
+	player_hitbox.position.y -= 14
 	floor_stop_on_slope = true
 	crouching = false
 
