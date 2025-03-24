@@ -54,15 +54,15 @@ var on_zipline = false
 @onready var main_node = get_parent()
 
 #The code bellow is in no way organized or easy to read. I apologize in advance.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	hp.text = "Current HP: " + str(health)
-	
+	velocity = get_real_velocity()
 	
 	# don't fall when on zipline
 	if is_instance_of(get_parent(), PathFollow2D):
 		velocity.y = 0
 	else:
-		velocity.y += gravity
+		velocity.y += gravity*delta
 	
 	
 	#if Input.is_action_pressed("Shift"):
@@ -99,9 +99,9 @@ func _process(delta: float) -> void:
 	# Starts Crouch.
 	if Input.is_action_just_pressed("crouch"):
 		scale.y = 0.5
-		position.y += 15
+		position.y += 14
 		floor_stop_on_slope = false
-		floor_max_angle = 0
+		#floor_max_angle = 0
 		crouching = true
 	if $CheckCeiling.is_colliding():
 			checking_above = true
@@ -199,7 +199,7 @@ func take_damage(amount):
 # Puts player in proper position when standing back up
 func reset_after_crouch():
 	scale.y = 1
-	position.y -= 15
+	position.y -= 14
 	floor_stop_on_slope = true
 	crouching = false
 
