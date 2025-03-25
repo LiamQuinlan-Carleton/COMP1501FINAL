@@ -69,6 +69,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y += gravity*delta
 	
+	if on_zipline:
+		velocity.x = 0
+		velocity.y = 0
 	
 	#if Input.is_action_pressed("Shift"):
 		#velocity.x -= 1000 * delta

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://7vyw80euf8ct"]
+[gd_scene load_steps=10 format=4 uid="uid://7vyw80euf8ct"]
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_q4ttp"]
 [ext_resource type="Texture2D" uid="uid://1eumra722j5d" path="res://Art/TileSets/buildingTileset.png" id="2_j5dg7"]
 [ext_resource type="Texture2D" uid="uid://dvpdfehv8hm1w" path="res://Art/TileSets/slideTiles.png" id="3_iqmcy"]
 [ext_resource type="PackedScene" uid="uid://c8j55ah1v7fy2" path="res://spawner.tscn" id="4_aeghy"]
 [ext_resource type="PackedScene" uid="uid://codnqtebakn4" path="res://dummy.tscn" id="5_2bh44"]
+[ext_resource type="PackedScene" uid="uid://djxscqvgw0uy6" path="res://zipline.tscn" id="6_p4u7b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_njlau"]
 texture = ExtResource("2_j5dg7")
@@ -62,3 +63,9 @@ position = Vector2(5220, 415)
 
 [node name="Dummy2" parent="." instance=ExtResource("5_2bh44")]
 position = Vector2(5440, 421)
+
+[node name="Zipline" parent="." instance=ExtResource("6_p4u7b")]
+position = Vector2(2558, 633)
+rotation = 0.645772
+scale = Vector2(2, 1)
+speed = 1000
