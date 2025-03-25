@@ -69,6 +69,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y += gravity*delta
 	
+	if on_zipline:
+		velocity.x = 0
+		velocity.y = 0
 	
 	#if Input.is_action_pressed("Shift"):
 		#velocity.x -= 1000 * delta
@@ -158,7 +161,7 @@ func _physics_process(delta: float) -> void:
 		if !crouching and is_on_floor():
 			animation.play("Run Right")
 	if (Input.is_action_pressed("Right") or Input.is_action_pressed("Left")) and !on_zipline:
-		if sign(velocity.x) * velocity.x <= speed:
+		if sign(velocity.x) * velocity.x <= speed or sign(velocity.x) != sign(l_dir):
 			velocity.x += acceleration * l_dir * delta
 			if velocity.x > speed:
 				velocity.x = speed

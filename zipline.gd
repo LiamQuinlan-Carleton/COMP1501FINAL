@@ -9,7 +9,6 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("Zipline")
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,11 +17,9 @@ func _process(delta: float) -> void:
 	# if PathFollow2D has Player as a child, start its progress
 	if (($Path2D/PathFollow2D.get_children()).size() > 1):     # WITH SPRITE, CHANGE NUMBER WHEN REMOVING SPRITE
 		var player = $Path2D/PathFollow2D.get_child(1)
-		player.velocity.x = 0
-		print(zipline.progress)
 		
 		# zipline progress only moves when player hasn't reached the end yet
-		if player.global_position.x +10 < self.global_position.x :
+		if player.global_position.x + 10 < self.global_position.x :
 			# moving and accelerating on zipline
 			zipline.progress += speed * delta
 			speed *= acceleration

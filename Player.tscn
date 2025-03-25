@@ -14,7 +14,7 @@ size = Vector2(35, 44)
 [sub_resource type="QuadMesh" id="QuadMesh_nibuc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqt3d"]
-size = Vector2(47, 54)
+size = Vector2(38, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jfvhl"]
 atlas = ExtResource("2_a5n8m")
@@ -552,7 +552,6 @@ offset_bottom = -69.0
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_eqt3d")
 
 [node name="CheckCeiling" type="RayCast2D" parent="."]
