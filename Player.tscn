@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ij7cn13her84" path="res://Art/Animations/slideright-Sheet.png" id="7_2fkt0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t478q"]
-size = Vector2(35, 45)
+size = Vector2(35, 44)
 
 [sub_resource type="QuadMesh" id="QuadMesh_nibuc"]
 
@@ -529,7 +529,7 @@ jump_buffer_timer = NodePath("JumpBuffer")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 1.5)
+position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_t478q")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
@@ -564,7 +564,7 @@ collide_with_areas = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_83j4p")
-animation = &"Jump Left"
+animation = &"Slide Left"
 
 [connection signal="timeout" from="JumpLength" to="." method="_on_jump_length_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
