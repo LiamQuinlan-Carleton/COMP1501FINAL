@@ -509,7 +509,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmohp"]
-size = Vector2(35, 19)
+size = Vector2(35, 23)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jump_timer", "shoot_timer", "jump_buffer_timer")]
 position = Vector2(-2, -2)
@@ -569,7 +569,7 @@ animation = &"Slide Left"
 script = ExtResource("8_q7q8a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Upper Collision"]
-position = Vector2(-0.5, -10.5)
+position = Vector2(-0.5, -24.5)
 shape = SubResource("RectangleShape2D_fmohp")
 
 [connection signal="timeout" from="JumpLength" to="." method="_on_jump_length_timeout"]
