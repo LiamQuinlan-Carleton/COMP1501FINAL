@@ -43,6 +43,7 @@ var l_dir : int = 1 #last direction key pressed. -1 = Left, 1 = Right
 var checking_above : bool = false # True if crouched and currently cant uncrouch, false if player can
 var crouching: bool = false # True if the player is crouching, false otherwise
 var want_to_stand: bool = false # True if the player wants to uncrouch
+var can_stand: bool = true
 
 #Grab hp label node
 @onready var hp = $"HP Label"
@@ -127,22 +128,11 @@ func _physics_process(delta: float) -> void:
 			animation.play("Slide Right")
 		else:
 			animation.play("Slide Left")
-	if $CheckCeiling.is_colliding():
-			checking_above = true
 	if Input.is_action_just_released("crouch"):
 		want_to_stand = true
-		if $CheckCeiling.is_colliding():
-			checking_above = true
-		else: 
-			reset_after_crouch()
-			want_to_stand = false
 		#floor_max_angle = 45 Supposed to change sliding on slopes, broke the walls (fix later)
-	if checking_above and crouching and want_to_stand:
-		if not $CheckCeiling.is_colliding():
-			reset_after_crouch()
-			checking_above = false 
-			want_to_stand = false
-	
+	if want_to_stand and crouching and can_stand:
+		reset_after_crouch()
 	#Run control
 	if Input.is_action_just_pressed("Right"):
 		l_dir= 1
@@ -185,7 +175,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("Shift"):
 		reparent(main_node)
 		on_zipline = false
-
+	
+	if is_on_wall():
+		if Input.is_action_pressed("Right"):
+			gravity = 300 # Half of gravity
+		elif Input.is_action_pressed("Left"):
+			print("hi")
+			gravity = 300 # Half of gravity
+	else: 
+		gravity = 1350 
 
 func apply_friction(f_frict : float, a_resist : float, s_frict : float, floor : bool, delta : float):
 	
@@ -246,3 +244,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	in_zipline_area = false;
+
+
+func _on_upper_collision_body_entered(body: TileMapLayer) -> void:
+	if want_to_stand:
+		can_stand = false

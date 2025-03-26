@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://codnqtebakn4" path="res://dummy.tscn" id="5_2bh44"]
 [ext_resource type="PackedScene" uid="uid://djxscqvgw0uy6" path="res://zipline.tscn" id="6_p4u7b"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_njlau"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d16ap"]
 texture = ExtResource("2_j5dg7")
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -34,7 +34,7 @@ texture = ExtResource("2_j5dg7")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(6, -8, 8, -8, 8, -2, 6, -2)
 0:0/0/physics_layer_0/polygon_0/one_way = true
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oiils"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n6piu"]
 texture = ExtResource("3_iqmcy")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -8, 8, 8, 8)
@@ -43,13 +43,13 @@ texture = ExtResource("3_iqmcy")
 
 [sub_resource type="TileSet" id="TileSet_j570n"]
 physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_njlau")
-sources/2 = SubResource("TileSetAtlasSource_oiils")
+sources/1 = SubResource("TileSetAtlasSource_d16ap")
+sources/2 = SubResource("TileSetAtlasSource_n6piu")
 
 [node name="First Level" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_q4ttp")]
-position = Vector2(598, 546)
+position = Vector2(717, 578)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(196, 69)
@@ -69,3 +69,4 @@ position = Vector2(2558, 633)
 rotation = 0.645772
 scale = Vector2(2, 1)
 speed = 1000
+acceleration = 1.05

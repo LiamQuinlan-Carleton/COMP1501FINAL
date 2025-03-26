@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://bnlswq05iqbuc"]
+[gd_scene load_steps=78 format=3 uid="uid://bnlswq05iqbuc"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_i1o7x"]
 [ext_resource type="Texture2D" uid="uid://coqigyw74e1n5" path="res://Art/Animations/jumpleft-Sheet.png" id="2_a5n8m"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dyfs64oji8oty" path="res://Art/Animations/jumpright-Sheet.png" id="3_i0ok4"]
 [ext_resource type="Texture2D" uid="uid://bttculobdbdvh" path="res://Art/Animations/slideleft-Sheet.png" id="6_j7gpe"]
 [ext_resource type="Texture2D" uid="uid://ij7cn13her84" path="res://Art/Animations/slideright-Sheet.png" id="7_2fkt0"]
+[ext_resource type="Script" path="res://upper_collision.gd" id="8_q7q8a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t478q"]
 size = Vector2(35, 44)
@@ -507,6 +508,9 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmohp"]
+size = Vector2(35, 19)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jump_timer", "shoot_timer", "jump_buffer_timer")]
 position = Vector2(-2, -2)
 floor_max_angle = 1.55334
@@ -554,10 +558,6 @@ offset_bottom = -69.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_eqt3d")
 
-[node name="CheckCeiling" type="RayCast2D" parent="."]
-target_position = Vector2(0, -55)
-collide_with_areas = true
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -565,8 +565,16 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_83j4p")
 animation = &"Slide Left"
 
+[node name="Upper Collision" type="Area2D" parent="."]
+script = ExtResource("8_q7q8a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Upper Collision"]
+position = Vector2(-0.5, -10.5)
+shape = SubResource("RectangleShape2D_fmohp")
+
 [connection signal="timeout" from="JumpLength" to="." method="_on_jump_length_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
 [connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Upper Collision" to="." method="_on_upper_collision_body_entered"]
