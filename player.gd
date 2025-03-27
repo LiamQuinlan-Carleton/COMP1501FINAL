@@ -17,7 +17,7 @@ extends CharacterBody2D
 @export var floor_friction : float
 @export var air_resistance : float
 @export var sliding_friction: float
-
+@export var wall_friction: float 
 #Shoot
 @export var shoot_cooldown : float
 
@@ -98,16 +98,17 @@ func _physics_process(delta: float) -> void:
 		want_jump = false
 		is_jumping = true
 		jump_timer.start(jump_length)
-		
-	if want_jump and is_on_wall():
-		print(l_dir)
-		want_jump = false
-		is_jumping = true
-		jump_timer.start(jump_length)
-		if l_dir == 1:
-			velocity.x = -1*speed
-		else:
-			velocity.x = speed
+	
+	if is_on_wall():
+		apply_friction(wall_friction, air_resistance, sliding_friction, false, delta, false)
+		if want_jump:
+			want_jump = false
+			is_jumping = true
+			jump_timer.start(jump_length)
+			if l_dir == 1:
+				velocity.x = -1*speed
+			else:
+				velocity.x = speed
 		
 	if is_jumping:
 		velocity.y = -jump_speed
@@ -158,7 +159,7 @@ func _physics_process(delta: float) -> void:
 			if velocity.x < -speed:
 				velocity.x = -speed
 	else:
-		apply_friction(floor_friction, air_resistance, sliding_friction, is_on_floor(), delta)
+		apply_friction(floor_friction, air_resistance, sliding_friction, is_on_floor(), delta, true)
 	
 	Global.player_position = global_position
 	
@@ -175,31 +176,27 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("Shift"):
 		reparent(main_node)
 		on_zipline = false
-	
-	if is_on_wall():
-		if Input.is_action_pressed("Right"):
-			gravity = 300 # Half of gravity
-		elif Input.is_action_pressed("Left"):
-			print("hi")
-			gravity = 300 # Half of gravity
+																									#x is true
+func apply_friction(f_frict : float, a_resist : float, s_frict : float, floor : bool, delta : float, x_or_y : bool):
+	if x_or_y:
+		var dir = sign(velocity.x)
+		
+		var vel_to_remove : float
+		if is_on_floor():
+			if Input.is_action_pressed("crouch"):
+				vel_to_remove = s_frict
+			else: 
+				vel_to_remove = f_frict
+		else:
+			vel_to_remove = a_resist
+		velocity.x -= dir * vel_to_remove * delta
+		if dir * velocity.x < 0:
+			velocity.x = 0
 	else: 
-		gravity = 1350 
-
-func apply_friction(f_frict : float, a_resist : float, s_frict : float, floor : bool, delta : float):
-	
-	var dir = sign(velocity.x)
-	
-	var vel_to_remove : float
-	if is_on_floor():
-		if Input.is_action_pressed("crouch"):
-			vel_to_remove = s_frict
-		else: 
-			vel_to_remove = f_frict
-	else:
-		vel_to_remove = a_resist
-	velocity.x -= dir * vel_to_remove * delta
-	if dir * velocity.x < 0:
-		velocity.x = 0
+		var dir = sign(velocity.y)
+		var vel_to_remove : float = velocity.y*f_frict
+		velocity.y -= vel_to_remove * delta
+		
 
 # Handle inputs
 func _input(event: InputEvent) -> void:
