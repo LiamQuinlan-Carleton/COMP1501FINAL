@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_xc4sc"]
 [ext_resource type="Texture2D" uid="uid://1eumra722j5d" path="res://Art/TileSets/buildingTileset.png" id="2_gwjk7"]
-[ext_resource type="Texture2D" uid="uid://dvpdfehv8hm1w" path="res://Art/TileSets/slideTiles.png" id="2_rrciu"]
 [ext_resource type="Texture2D" uid="uid://c0lxs2ch7it2b" path="res://icon.svg" id="3_0it4c"]
 [ext_resource type="Script" path="res://grapple.gd" id="3_rkjoq"]
 [ext_resource type="PackedScene" uid="uid://c8j55ah1v7fy2" path="res://spawner.tscn" id="3_yud08"]
@@ -37,8 +36,10 @@ texture = ExtResource("2_gwjk7")
 0:1/0 = 0
 0:2/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_alj10"]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yp1gk"]
-texture = ExtResource("2_rrciu")
+texture = SubResource("CompressedTexture2D_alj10")
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, 8, -8, 8)
 2:0/0 = 0
