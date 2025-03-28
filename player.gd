@@ -64,6 +64,10 @@ func _physics_process(delta: float) -> void:
 	hp.text = "Current HP: " + str(health)
 	velocity = get_real_velocity()
 	
+	if (global_position.y > 1300):
+		global_position.x = 600
+		global_position.y = 550
+	
 	# don't fall when on zipline
 	if is_instance_of(get_parent(), PathFollow2D):
 		velocity.y = 0
