@@ -64,9 +64,9 @@ func _physics_process(delta: float) -> void:
 	hp.text = "Current HP: " + str(health)
 	velocity = get_real_velocity()
 	
-	if (global_position.y > 1300):
-		global_position.x = 600
-		global_position.y = 550
+	#if (global_position.y > 1300):
+		#global_position.x = 600
+		#global_position.y = 550
 	
 	# don't fall when on zipline
 	if is_instance_of(get_parent(), PathFollow2D):
@@ -177,9 +177,9 @@ func _physics_process(delta: float) -> void:
 			reparent(zipline_area)
 			on_zipline = true
 	# when releasing interact, player reparents itself to main, no longer follows zipline's path
-	if Input.is_action_just_released("Shift"):
-		reparent(main_node)
-		on_zipline = false
+		if Input.is_action_just_released("Shift"):
+			reparent(main_node)
+			on_zipline = false
 																									#x is true
 func apply_friction(f_frict : float, a_resist : float, s_frict : float, floor : bool, delta : float, x_or_y : bool):
 	if x_or_y:
@@ -232,7 +232,9 @@ func reset_after_crouch():
 	crouching = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	in_zipline_area = true;
+	var areas = $Area2D.get_overlapping_areas()
+	if (areas.size() > 1):
+		in_zipline_area = true;
 	
 	# set zipline_area to the area of the zipline the player's overlapping with
 	var area_array = $Area2D.get_overlapping_areas()
@@ -244,6 +246,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 						zipline_area = c
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
+	print("area2d exited")
 	in_zipline_area = false;
 
 

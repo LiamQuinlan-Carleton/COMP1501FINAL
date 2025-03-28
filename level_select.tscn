@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cegrt4uxhtfc0"]
+[gd_scene load_steps=4 format=3 uid="uid://eft7jwwq5t5r"]
 
-[ext_resource type="PackedScene" uid="uid://3sypqc64pspy" path="res://level_icon.tscn" id="1_5ppls"]
+[ext_resource type="PackedScene" uid="uid://pcdfsjykwprc" path="res://level_icon.tscn" id="1_5ppls"]
 [ext_resource type="Script" path="res://level_select.gd" id="1_747ju"]
-[ext_resource type="PackedScene" uid="uid://butt1se3ljcxg" path="res://player_icon.tscn" id="3_awpb3"]
+[ext_resource type="PackedScene" uid="uid://bngk6jyeoxid5" path="res://player_icon.tscn" id="3_awpb3"]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -26,6 +26,7 @@ offset_top = 370.0
 offset_right = 387.0
 offset_bottom = 434.0
 level_index = 2
+level_path = "res://second_level.tscn"
 
 [node name="LevelIcon3" parent="." instance=ExtResource("1_5ppls")]
 offset_left = 541.0
