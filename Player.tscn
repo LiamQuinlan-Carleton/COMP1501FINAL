@@ -579,3 +579,4 @@ shape = SubResource("RectangleShape2D_fmohp")
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Upper Collision" to="." method="_on_upper_collision_body_entered"]
+[connection signal="body_exited" from="Upper Collision" to="." method="_on_upper_collision_body_exited"]

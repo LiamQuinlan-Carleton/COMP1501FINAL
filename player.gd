@@ -112,7 +112,7 @@ func _physics_process(delta: float) -> void:
 		
 	if is_jumping:
 		velocity.y = -jump_speed
-	
+	print(crouching)
 	#Crouch control
 	if Input.is_action_just_pressed("crouch"):
 		if (l_dir > 0):
@@ -226,10 +226,10 @@ func reset_after_crouch():
 	player_hitbox.position.y = 2
 	floor_stop_on_slope = true
 	crouching = false
+	want_to_stand = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	in_zipline_area = true;
-	
 	# set zipline_area to the area of the zipline the player's overlapping with
 	var area_array = $Area2D.get_overlapping_areas()
 	for a in area_array:
@@ -244,5 +244,8 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 
 func _on_upper_collision_body_entered(body: TileMapLayer) -> void:
-	if want_to_stand:
-		can_stand = false
+	can_stand = false
+
+
+func _on_upper_collision_body_exited(body: TileMapLayer) -> void:
+	can_stand = true

@@ -46,7 +46,6 @@ sources/2 = SubResource("TileSetAtlasSource_dpv7u")
 [node name="Second Level" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_dh4qb")]
-wall_friction = 5.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(196, 69)
