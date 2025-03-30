@@ -112,7 +112,7 @@ func _physics_process(delta: float) -> void:
 		
 	if is_jumping:
 		velocity.y = -jump_speed
-	print(crouching)
+	
 	#Crouch control
 	if Input.is_action_just_pressed("crouch"):
 		if (l_dir > 0):
