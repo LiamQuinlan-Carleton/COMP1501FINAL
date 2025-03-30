@@ -4,7 +4,7 @@ extends Node2D
 @onready var main_node = get_parent()
 
 @export var speed = 50
-@export var acceleration = 1.1
+@export var acceleration = 1000
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 		if player.global_position.x + 10 < self.global_position.x :
 			# moving and accelerating on zipline
 			zipline.progress += speed * delta
-			speed *= acceleration
+			speed += acceleration * delta
 		
 		#if zipline.progress_ratio < 0.1 :    # remove when removing loop
 			#speed = 100
