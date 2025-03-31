@@ -161,9 +161,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			animation.play("Idle")
 	if is_on_wall() and !crouching and !is_jumping and can_shoot:
-		if (velocity.x > 0):
+		if (l_dir == 1):
 			animation.play("Wall Slide Right")
-		elif (velocity.x < 0):
+		elif (l_dir == -1):
 			animation.play("Wall Slide Left")
 	
 	if Input.is_action_just_pressed("Right"):
