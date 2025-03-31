@@ -10,6 +10,8 @@ extends CharacterBody2D
 @export var jump_length : float #Time spent moving upwards at jump_speed
 @export var jump_end_force : float #Applied when jump button released before peak of jump
 @export var jump_buffer : float #Earliest time jump button can be pressed and still allow jump when reaches floor
+@export var cyote_time : float
+var lastSurface : String
 
 #Run
 @export var speed : float #Max run speed
@@ -31,7 +33,7 @@ extends CharacterBody2D
 #Player can press jump before touching ground and still jump once they land. 
 #This is the time allowed between pressing button and jumping
 @export var jump_buffer_timer : Timer 
-#@export var cyote_time_timer : Timer
+@export var cyote_time_timer : Timer
 
 #Logic variables
 var is_jumping : bool #Is actively holding space to move upwards. Is false when space is let go or jump time runs out
@@ -94,12 +96,12 @@ func _physics_process(delta: float) -> void:
 		if velocity.y < 0:
 			velocity.y += jump_end_force
 	
-	if want_jump and is_on_floor():
+	if want_jump and is_on_floor() or (can_jump and want_jump and lastSurface == "floor"):
 		want_jump = false
 		is_jumping = true
 		jump_timer.start(jump_length)
 	
-	if is_on_wall():
+	if is_on_wall() or (can_jump and lastSurface == "wall"):
 		apply_friction(wall_friction, air_resistance, sliding_friction, false, delta, false)
 		if want_jump:
 			want_jump = false
@@ -109,7 +111,15 @@ func _physics_process(delta: float) -> void:
 				velocity.x = -1*speed
 			else:
 				velocity.x = speed
-		
+	
+	if is_on_floor() or is_on_wall():
+		can_jump = true
+		if is_on_floor():
+			lastSurface = "floor"
+		else:
+			lastSurface = "wall"
+		cyote_time_timer.start(cyote_time)
+	
 	if is_jumping:
 		velocity.y = -jump_speed
 	print(crouching)
@@ -212,6 +222,9 @@ func _on_jump_length_timeout() -> void:
 
 func _on_jump_buffer_timeout() -> void:
 	want_jump = false
+
+func _on_cyote_time_timeout() -> void:
+	can_jump = false
 
 func _on_shoot_cooldown_timeout() -> void:
 	can_shoot = true
