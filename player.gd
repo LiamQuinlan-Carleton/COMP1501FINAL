@@ -102,6 +102,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_wall():
 		apply_friction(wall_friction, air_resistance, sliding_friction, false, delta, false)
 		if want_jump:
+			print("hi")
 			want_jump = false
 			is_jumping = true
 			jump_timer.start(jump_length)
@@ -112,7 +113,7 @@ func _physics_process(delta: float) -> void:
 		
 	if is_jumping:
 		velocity.y = -jump_speed
-	print(crouching)
+
 	#Crouch control
 	if Input.is_action_just_pressed("crouch"):
 		if (l_dir > 0):
@@ -121,8 +122,7 @@ func _physics_process(delta: float) -> void:
 			animation.play("Slide Left Start")
 		player_hitbox.scale.y = 0.5
 		player_hitbox.position.y = 13
-		floor_stop_on_slope = false
-		#floor_max_angle = 0
+		
 		crouching = true
 		await get_tree().create_timer(0.5).timeout
 		if (l_dir > 0):
@@ -131,7 +131,6 @@ func _physics_process(delta: float) -> void:
 			animation.play("Slide Left")
 	if Input.is_action_just_released("crouch"):
 		want_to_stand = true
-		#floor_max_angle = 45 Supposed to change sliding on slopes, broke the walls (fix later)
 	if want_to_stand and crouching and can_stand:
 		reset_after_crouch()
 	#Run control
@@ -176,11 +175,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("Shift"):
 		reparent(main_node)
 		on_zipline = false
+
 																									#x is true
 func apply_friction(f_frict : float, a_resist : float, s_frict : float, floor : bool, delta : float, x_or_y : bool):
 	if x_or_y:
 		var dir = sign(velocity.x)
-		
 		var vel_to_remove : float
 		if is_on_floor():
 			if Input.is_action_pressed("crouch"):
