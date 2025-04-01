@@ -52,6 +52,7 @@ var can_stand: bool = true
 #Grab animatedsprite2d node
 @onready var animation = $AnimatedSprite2D
 var current_frame
+var update_frame = false
 #Grab player collisionshape
 @onready var player_hitbox = $CollisionShape2D
 
@@ -109,7 +110,6 @@ func _physics_process(delta: float) -> void:
 	if is_on_wall() or (can_jump and lastSurface == "wall"):
 		apply_friction(wall_friction, air_resistance, sliding_friction, false, delta, false)
 		if want_jump:
-			print("hi")
 			want_jump = false
 			is_jumping = true
 			jump_timer.start(jump_length)
@@ -132,23 +132,48 @@ func _physics_process(delta: float) -> void:
 	
 	#Crouch control
 	if Input.is_action_just_pressed("crouch"):
-		if (velocity.x > 0):
-			animation.play("Slide Right Start")
+		if (velocity.y > 25):
+			if (velocity.x > 0):
+				animation.play("Slope Right Start")
+			else:
+				animation.play("Slope Left Start")
 		else:
-			animation.play("Slide Left Start")
+			if (velocity.x > 0):
+				animation.play("Slide Right Start")
+			else:
+				animation.play("Slide Left Start")
 		player_hitbox.scale.y = 0.5
 		player_hitbox.position.y = 13
 		
 		crouching = true
 		await get_tree().create_timer(0.5).timeout
-		if (velocity.x > 0):
-			animation.play("Slide Right")
+		update_frame = true
+		if (velocity.y > 0):
+			if (velocity.x > 0):
+				animation.play("Slope Right")
+			else:
+				animation.play("Slope Left")
 		else:
-			animation.play("Slide Left")
+			if (velocity.x > 0):
+				animation.play("Slide Right")
+			else:
+				animation.play("Slide Left")
 	if Input.is_action_just_released("crouch"):
 		want_to_stand = true
 	if want_to_stand and crouching and can_stand:
 		reset_after_crouch()
+	
+	if is_on_floor() and crouching and !is_jumping and update_frame:
+		if (velocity.y > 50):
+			if (velocity.x > 0):
+				animation.play("Slope Right")
+			else:
+				animation.play("Slope Left")
+		else:
+			if (velocity.x > 0):
+				animation.play("Slide Right")
+			else:
+				animation.play("Slide Left")
 	
 	#Run control
 	if is_on_floor() and !crouching and !is_jumping and can_shoot:
@@ -260,6 +285,7 @@ func reset_after_crouch():
 	floor_stop_on_slope = true
 	crouching = false
 	want_to_stand = false
+	update_frame = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	in_zipline_area = true;
