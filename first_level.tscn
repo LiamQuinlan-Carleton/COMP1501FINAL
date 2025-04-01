@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://7vyw80euf8ct"]
+[gd_scene load_steps=13 format=4 uid="uid://7vyw80euf8ct"]
 
+[ext_resource type="Script" path="res://first_level.gd" id="1_lq0g4"]
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_q4ttp"]
 [ext_resource type="Texture2D" uid="uid://1eumra722j5d" path="res://Art/TileSets/buildingTileset.png" id="2_j5dg7"]
 [ext_resource type="Texture2D" uid="uid://dvpdfehv8hm1w" path="res://Art/TileSets/slideTiles.png" id="3_iqmcy"]
 [ext_resource type="PackedScene" uid="uid://c8j55ah1v7fy2" path="res://spawner.tscn" id="4_aeghy"]
 [ext_resource type="PackedScene" uid="uid://codnqtebakn4" path="res://dummy.tscn" id="5_2bh44"]
 [ext_resource type="PackedScene" uid="uid://djxscqvgw0uy6" path="res://zipline.tscn" id="6_p4u7b"]
+[ext_resource type="PackedScene" uid="uid://b6mi2a647dqyv" path="res://pause_menu.tscn" id="7_6x4jh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d16ap"]
 texture = ExtResource("2_j5dg7")
@@ -46,10 +48,15 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_d16ap")
 sources/2 = SubResource("TileSetAtlasSource_n6piu")
 
+[sub_resource type="LabelSettings" id="LabelSettings_o44dx"]
+font_size = 25
+
 [node name="First Level" type="Node"]
+script = ExtResource("1_lq0g4")
 
 [node name="Player" parent="." instance=ExtResource("1_q4ttp")]
 position = Vector2(717, 578)
+spawn = Vector2(717, 578)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(196, 69)
@@ -70,3 +77,23 @@ rotation = 0.645772
 scale = Vector2(2, 1)
 speed = 1000
 acceleration = 1.05
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("7_6x4jh")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_o44dx")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true

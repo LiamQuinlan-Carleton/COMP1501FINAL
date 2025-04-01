@@ -59,6 +59,10 @@ var on_zipline = false
 @onready var ziplines = get_tree().get_nodes_in_group("Zipline")
 @onready var main_node = get_parent()
 
+# Level variables
+@export var spawn : Vector2 = Vector2(0, 0) # spawn point 
+
+
 #The code bellow is in no way organized or easy to read. I apologize in advance.
 func _physics_process(delta: float) -> void:
 	hp.text = "Current HP: " + str(health)
@@ -180,7 +184,16 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_released("Shift"):
 			reparent(main_node)
 			on_zipline = false
-																									#x is true
+	
+
+func _process(delta: float) -> void:
+	pass
+	# die and respawn if health runs out or fell off map
+	#if health <= 0 or global_position.y > maxY:
+		#global_position = spawn
+
+
+#x is true
 func apply_friction(f_frict : float, a_resist : float, s_frict : float, floor : bool, delta : float, x_or_y : bool):
 	if x_or_y:
 		var dir = sign(velocity.x)
@@ -232,12 +245,11 @@ func reset_after_crouch():
 	crouching = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	var areas = $Area2D.get_overlapping_areas()
-	if (areas.size() > 1):
+	var area_array = $Area2D.get_overlapping_areas()
+	if (area_array.size() > 1):
 		in_zipline_area = true;
 	
 	# set zipline_area to the area of the zipline the player's overlapping with
-	var area_array = $Area2D.get_overlapping_areas()
 	for a in area_array:
 		for b in a.get_parent().get_children() :
 			if is_instance_of(b, Path2D) :
@@ -246,7 +258,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 						zipline_area = c
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	print("area2d exited")
 	in_zipline_area = false;
 
 
