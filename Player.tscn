@@ -872,6 +872,7 @@ size = Vector2(35, 10)
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jump_timer", "shoot_timer", "jump_buffer_timer", "cyote_time_timer")]
 position = Vector2(-2, -2)
 floor_max_angle = 1.55334
+safe_margin = 0.2
 script = ExtResource("1_i1o7x")
 health = 10
 jump_speed = 300.0

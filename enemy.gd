@@ -10,11 +10,11 @@ extends RigidBody2D
 
 #Logic variables
 var can_shoot : bool = true #True when player isn't reloading or delayed between shots
-
+@export var current_level: String
 #Grab raycast node for line of sight
 @onready var los = $LineOfSight
 #Grab player node
-@onready var player = get_node("/root/Main/Player")
+@onready var player = get_tree().get_root().find_child("Player", true, false)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
