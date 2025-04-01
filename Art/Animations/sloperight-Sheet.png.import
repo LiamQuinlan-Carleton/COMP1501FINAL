@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvpdfehv8hm1w"
-path="res://.godot/imported/slideTiles.png-c7756a955a26e0a8f9062fa23cf099a1.ctex"
+uid="uid://cebh7tag2yiib"
+path="res://.godot/imported/sloperight-Sheet.png-294bd5abc371bc245b1906742b119631.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/TileSets/slideTiles.png"
-dest_files=["res://.godot/imported/slideTiles.png-c7756a955a26e0a8f9062fa23cf099a1.ctex"]
+source_file="res://Art/Animations/sloperight-Sheet.png"
+dest_files=["res://.godot/imported/sloperight-Sheet.png-294bd5abc371bc245b1906742b119631.ctex"]
 
 [params]
 

@@ -10,6 +10,8 @@ extends CharacterBody2D
 @export var jump_length : float #Time spent moving upwards at jump_speed
 @export var jump_end_force : float #Applied when jump button released before peak of jump
 @export var jump_buffer : float #Earliest time jump button can be pressed and still allow jump when reaches floor
+@export var cyote_time : float
+var lastSurface : String
 
 #Run
 @export var speed : float #Max run speed
@@ -31,7 +33,7 @@ extends CharacterBody2D
 #Player can press jump before touching ground and still jump once they land. 
 #This is the time allowed between pressing button and jumping
 @export var jump_buffer_timer : Timer 
-#@export var cyote_time_timer : Timer
+@export var cyote_time_timer : Timer
 
 #Logic variables
 var is_jumping : bool #Is actively holding space to move upwards. Is false when space is let go or jump time runs out
@@ -49,6 +51,8 @@ var can_stand: bool = true
 @onready var hp = $"HP Label"
 #Grab animatedsprite2d node
 @onready var animation = $AnimatedSprite2D
+var current_frame
+var update_frame = false
 #Grab player collisionshape
 @onready var player_hitbox = $CollisionShape2D
 
@@ -89,25 +93,29 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Jump"):
 		want_jump = true
 		jump_buffer_timer.start(jump_buffer)
-		if (l_dir > 0):
-			animation.frame = 0
-			animation.play("Jump Right")
+		if is_on_wall():
+			if (l_dir < 0):
+				animation.play("Jump Right")
+			else:
+				animation.play("Jump Left")
 		else:
-			animation.frame = 0
-			animation.play("Jump Left")
-	
+			if (l_dir > 0):
+				animation.play("Jump Right")
+			else:
+				animation.play("Jump Left")
+
 	if Input.is_action_just_released("Jump"):
 		want_jump = false
 		is_jumping = false
 		if velocity.y < 0:
 			velocity.y += jump_end_force
 	
-	if want_jump and is_on_floor():
+	if want_jump and is_on_floor() or (can_jump and want_jump and lastSurface == "floor"):
 		want_jump = false
 		is_jumping = true
 		jump_timer.start(jump_length)
 	
-	if is_on_wall():
+	if is_on_wall() or (can_jump and lastSurface == "wall"):
 		apply_friction(wall_friction, air_resistance, sliding_friction, false, delta, false)
 		if want_jump:
 			want_jump = false
@@ -117,48 +125,88 @@ func _physics_process(delta: float) -> void:
 				velocity.x = -1*speed
 			else:
 				velocity.x = speed
-		
+	
+	if is_on_floor() or is_on_wall():
+		can_jump = true
+		if is_on_floor():
+			lastSurface = "floor"
+		else:
+			lastSurface = "wall"
+		cyote_time_timer.start(cyote_time)
+	
 	if is_jumping:
 		velocity.y = -jump_speed
+
 	
 	#Crouch control
 	if Input.is_action_just_pressed("crouch"):
-		if (l_dir > 0):
-			animation.play("Slide Right Start")
+		if (velocity.y > 25):
+			if (velocity.x > 0):
+				animation.play("Slope Right Start")
+			else:
+				animation.play("Slope Left Start")
 		else:
-			animation.play("Slide Left Start")
+			if (velocity.x > 0):
+				animation.play("Slide Right Start")
+			else:
+				animation.play("Slide Left Start")
 		player_hitbox.scale.y = 0.5
 		player_hitbox.position.y = 13
-		floor_stop_on_slope = false
-		#floor_max_angle = 0
+		
 		crouching = true
 		await get_tree().create_timer(0.5).timeout
-		if (l_dir > 0):
-			animation.play("Slide Right")
+		update_frame = true
+		if (velocity.y > 0):
+			if (velocity.x > 0):
+				animation.play("Slope Right")
+			else:
+				animation.play("Slope Left")
 		else:
-			animation.play("Slide Left")
+			if (velocity.x > 0):
+				animation.play("Slide Right")
+			else:
+				animation.play("Slide Left")
 	if Input.is_action_just_released("crouch"):
 		want_to_stand = true
-		#floor_max_angle = 45 Supposed to change sliding on slopes, broke the walls (fix later)
 	if want_to_stand and crouching and can_stand:
 		reset_after_crouch()
+	
+	if is_on_floor() and crouching and !is_jumping and update_frame:
+		if (velocity.y > 50):
+			if (velocity.x > 0):
+				animation.play("Slope Right")
+			else:
+				animation.play("Slope Left")
+		else:
+			if (velocity.x > 0):
+				animation.play("Slide Right")
+			else:
+				animation.play("Slide Left")
+	
 	#Run control
+	if is_on_floor() and !crouching and !is_jumping and can_shoot:
+		if (velocity.x > 0):
+			animation.play("Run Right")
+			current_frame = animation.frame
+		elif (velocity.x < 0):
+			animation.play("Run Left")
+			current_frame = animation.frame
+		else:
+			animation.play("Idle")
+	if is_on_wall() and !crouching and !is_jumping and can_shoot:
+		if (l_dir == 1):
+			animation.play("Wall Slide Right")
+		elif (l_dir == -1):
+			animation.play("Wall Slide Left")
+	
 	if Input.is_action_just_pressed("Right"):
 		l_dir= 1
-		if !crouching and is_on_floor():
-			animation.play("Run Right")
 	elif Input.is_action_just_released("Right") and Input.is_action_pressed("Left"):
 		l_dir = -1
-		if !crouching and is_on_floor():
-			animation.play("Run Left")
 	if Input.is_action_just_pressed("Left"):
 		l_dir = -1
-		if !crouching and is_on_floor():
-			animation.play("Run Left")
 	elif Input.is_action_just_released("Left") and Input.is_action_pressed("Right"):
 		l_dir = 1
-		if !crouching and is_on_floor():
-			animation.play("Run Right")
 	if (Input.is_action_pressed("Right") or Input.is_action_pressed("Left")) and !on_zipline:
 		if sign(velocity.x) * velocity.x <= speed or sign(velocity.x) != sign(l_dir):
 			velocity.x += acceleration * l_dir * delta
@@ -181,6 +229,7 @@ func _physics_process(delta: float) -> void:
 			reparent(zipline_area)
 			on_zipline = true
 	# when releasing interact, player reparents itself to main, no longer follows zipline's path
+
 		if Input.is_action_just_released("Shift"):
 			reparent(main_node)
 			on_zipline = false
@@ -197,7 +246,6 @@ func _process(delta: float) -> void:
 func apply_friction(f_frict : float, a_resist : float, s_frict : float, floor : bool, delta : float, x_or_y : bool):
 	if x_or_y:
 		var dir = sign(velocity.x)
-		
 		var vel_to_remove : float
 		if is_on_floor():
 			if Input.is_action_pressed("crouch"):
@@ -223,12 +271,22 @@ func _input(event: InputEvent) -> void:
 			Global.shoot.emit()
 			can_shoot = false
 			shoot_timer.start(shoot_cooldown)
+			if is_on_floor():
+				if (velocity.x > 0):
+					animation.play("Shoot Right")
+					animation.frame = current_frame + 1
+				elif (velocity.x < 0):
+					animation.play("Shoot Left")
+					animation.frame = current_frame + 1
 
 func _on_jump_length_timeout() -> void:
 	is_jumping = false
 
 func _on_jump_buffer_timeout() -> void:
 	want_jump = false
+
+func _on_cyote_time_timeout() -> void:
+	can_jump = false
 
 func _on_shoot_cooldown_timeout() -> void:
 	can_shoot = true
@@ -243,6 +301,8 @@ func reset_after_crouch():
 	player_hitbox.position.y = 2
 	floor_stop_on_slope = true
 	crouching = false
+	want_to_stand = false
+	update_frame = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	var area_array = $Area2D.get_overlapping_areas()
@@ -262,5 +322,8 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 
 func _on_upper_collision_body_entered(body: TileMapLayer) -> void:
-	if want_to_stand:
-		can_stand = false
+	can_stand = false
+
+
+func _on_upper_collision_body_exited(body: TileMapLayer) -> void:
+	can_stand = true
