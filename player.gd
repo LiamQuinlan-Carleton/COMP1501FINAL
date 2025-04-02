@@ -278,7 +278,9 @@ func _input(event: InputEvent) -> void:
 				elif (velocity.x < 0):
 					animation.play("Shoot Left")
 					animation.frame = current_frame + 1
-
+					
+	if event.is_action_pressed("Reset"): # For quick resets
+		position = spawn
 func _on_jump_length_timeout() -> void:
 	is_jumping = false
 
@@ -330,4 +332,4 @@ func _on_upper_collision_body_exited(body: TileMapLayer) -> void:
 
 
 func _on_death_collisions_died() -> void:
-	print("hi")
+	position = spawn
