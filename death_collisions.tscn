@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://wmir60b8tbjr"]
+
+[ext_resource type="Script" path="res://death_collisions.gd" id="1_fmpno"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bm34q"]
+
+[node name="Death Collisions" type="Node2D"]
+script = ExtResource("1_fmpno")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_bm34q")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

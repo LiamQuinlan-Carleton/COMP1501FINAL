@@ -81,7 +81,7 @@ tile_set = SubResource("TileSet_x3f40")
 position = Vector2(294, 327)
 script = ExtResource("3_rkjoq")
 player = NodePath("../Player")
-force = 20.0
+force = 200.0
 line = NodePath("Line2D")
 metadata/_edit_group_ = true
 

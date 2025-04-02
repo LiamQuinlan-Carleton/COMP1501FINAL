@@ -308,3 +308,7 @@ func _on_upper_collision_body_entered(body: TileMapLayer) -> void:
 
 func _on_upper_collision_body_exited(body: TileMapLayer) -> void:
 	can_stand = true
+
+
+func _on_death_collisions_died() -> void:
+	print("hi")
