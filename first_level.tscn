@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://7vyw80euf8ct"]
+[gd_scene load_steps=13 format=4 uid="uid://7vyw80euf8ct"]
 
+[ext_resource type="Script" path="res://first_level.gd" id="1_lq0g4"]
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_q4ttp"]
 [ext_resource type="Texture2D" uid="uid://1eumra722j5d" path="res://Art/TileSets/buildingTileset.png" id="2_6m3ab"]
 [ext_resource type="Texture2D" uid="uid://d25jysgwcmlwo" path="res://Art/TileSets/slideTileset.png" id="2_xey84"]
@@ -7,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://codnqtebakn4" path="res://dummy.tscn" id="5_2bh44"]
 [ext_resource type="PackedScene" uid="uid://djxscqvgw0uy6" path="res://zipline.tscn" id="6_p4u7b"]
 [ext_resource type="PackedScene" uid="uid://wmir60b8tbjr" path="res://death_collisions.tscn" id="7_di4xb"]
+[ext_resource type="PackedScene" uid="uid://b6mi2a647dqyv" path="res://pause_menu.tscn" id="7_6x4jh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rx0l"]
 texture = ExtResource("2_xey84")
@@ -436,10 +438,15 @@ terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
 sources/1 = SubResource("TileSetAtlasSource_8tfpt")
 sources/0 = SubResource("TileSetAtlasSource_2rx0l")
 
+[sub_resource type="LabelSettings" id="LabelSettings_o44dx"]
+font_size = 25
+
 [node name="First Level" type="Node"]
+script = ExtResource("1_lq0g4")
 
 [node name="Player" parent="." instance=ExtResource("1_q4ttp")]
-position = Vector2(716, 633)
+position = Vector2(717, 578)
+spawn = Vector2(717, 578)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -461,6 +468,27 @@ rotation = 0.645772
 scale = Vector2(2, 1)
 speed = 1000
 acceleration = 1.05
+
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("7_6x4jh")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_o44dx")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
 
 [node name="Space" type="Label" parent="."]
 offset_left = 930.0

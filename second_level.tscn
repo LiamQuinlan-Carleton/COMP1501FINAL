@@ -435,6 +435,7 @@ sources/2 = SubResource("TileSetAtlasSource_g1k32")
 [node name="Second Level" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_dh4qb")]
+
 unique_name_in_owner = true
 position = Vector2(209, -57)
 

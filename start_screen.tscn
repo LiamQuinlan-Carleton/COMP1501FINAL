@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://byxsirwnf06oa"]
+
+[ext_resource type="Script" path="res://start_screen.gd" id="1_371tq"]
+
+[node name="start_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_371tq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 597.0
+offset_right = 658.0
+offset_bottom = 620.0
+text = "Press 'space' to start"
+horizontal_alignment = 1
