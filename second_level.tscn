@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=4 uid="uid://c4npcq2eae2ic"]
+[gd_scene load_steps=14 format=4 uid="uid://c4npcq2eae2ic"]
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_dh4qb"]
+[ext_resource type="Script" path="res://second_level.gd" id="1_rbf1v"]
 [ext_resource type="Texture2D" uid="uid://1eumra722j5d" path="res://Art/TileSets/buildingTileset.png" id="2_xytki"]
 [ext_resource type="Texture2D" uid="uid://d25jysgwcmlwo" path="res://Art/TileSets/slideTileset.png" id="3_ss3fm"]
 [ext_resource type="PackedScene" uid="uid://c8j55ah1v7fy2" path="res://spawner.tscn" id="4_ncos6"]
 [ext_resource type="PackedScene" uid="uid://bjv4ayd50t6r0" path="res://enemy.tscn" id="5_x8t67"]
 [ext_resource type="PackedScene" uid="uid://wmir60b8tbjr" path="res://death_collisions.tscn" id="6_dyod4"]
+[ext_resource type="PackedScene" uid="uid://b6mi2a647dqyv" path="res://pause_menu.tscn" id="7_br1qf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5k68v"]
 texture = ExtResource("3_ss3fm")
@@ -432,7 +434,11 @@ sources/1 = SubResource("TileSetAtlasSource_dd5or")
 sources/0 = SubResource("TileSetAtlasSource_5k68v")
 sources/2 = SubResource("TileSetAtlasSource_g1k32")
 
+[sub_resource type="LabelSettings" id="LabelSettings_ftpno"]
+font_size = 25
+
 [node name="Second Level" type="Node"]
+script = ExtResource("1_rbf1v")
 
 [node name="Player" parent="." instance=ExtResource("1_dh4qb")]
 unique_name_in_owner = true
@@ -459,5 +465,25 @@ position = Vector2(4199, 1348)
 [node name="Death Collisions" parent="." instance=ExtResource("6_dyod4")]
 position = Vector2(2758, 3511)
 scale = Vector2(500, 50)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("7_br1qf")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_ftpno")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 40.0
+autostart = true
 
 [connection signal="died" from="Death Collisions" to="Player" method="_on_death_collisions_died"]
