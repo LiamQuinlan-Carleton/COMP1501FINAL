@@ -70,6 +70,7 @@ var has_grapple : bool
 @export var grapple_line : Line2D
 var grapple_point : Vector2
 @export var grapple_force : float
+@export var grapple_distance : float
 
 #The code bellow is in no way organized or easy to read. I apologize in advance.
 func _physics_process(delta: float) -> void:
@@ -233,7 +234,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Right Click"):
 		var space_state = get_world_2d().direct_space_state
-		var query = PhysicsRayQueryParameters2D.create(position, get_global_mouse_position())
+		var query = PhysicsRayQueryParameters2D.create(position, position + (get_global_mouse_position() - position).normalized() * grapple_distance)
 		query.collide_with_areas = true
 		query.collide_with_bodies = false
 		query.collision_mask = 2
@@ -246,7 +247,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("Right Click") and has_grapple:
 		velocity += grapple_force * Vector2(grapple_point - position).normalized()
 		grapple_line.set_point_position(0, Vector2(0,0))
-		grapple_line.set_point_position(1, position - grapple_point)
+		grapple_line.set_point_position(1, grapple_point - position)
 	if Input.is_action_just_released("Right Click"):
 		has_grapple = false
 		grapple_line.hide()
@@ -341,8 +342,7 @@ func _input(event: InputEvent) -> void:
 					animation.play("Jump Shoot Left")
 					animation.frame = current_frame + 1
 	if event.is_action_pressed("Reset"): # For quick resets
-		position = spawn
-
+		get_tree().reload_current_scene()
 func _on_jump_length_timeout() -> void:
 	is_jumping = false
 
