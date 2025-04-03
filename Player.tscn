@@ -869,7 +869,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmohp"]
 size = Vector2(35, 10)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jump_timer", "shoot_timer", "jump_buffer_timer", "cyote_time_timer")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("jump_timer", "shoot_timer", "jump_buffer_timer", "cyote_time_timer", "grapple_line")]
 position = Vector2(-2, -2)
 floor_max_angle = 1.55334
 safe_margin = 0.2
@@ -892,6 +892,8 @@ jump_timer = NodePath("JumpLength")
 shoot_timer = NodePath("ShootCooldown")
 jump_buffer_timer = NodePath("JumpBuffer")
 cyote_time_timer = NodePath("CyoteTime")
+grapple_line = NodePath("Line2D")
+grapple_force = 100.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -936,6 +938,8 @@ script = ExtResource("8_q7q8a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Upper Collision"]
 position = Vector2(-0.5, -16)
 shape = SubResource("RectangleShape2D_fmohp")
+
+[node name="Line2D" type="Line2D" parent="."]
 
 [connection signal="timeout" from="JumpLength" to="." method="_on_jump_length_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://7vyw80euf8ct"]
+[gd_scene load_steps=15 format=4 uid="uid://7vyw80euf8ct"]
 
 [ext_resource type="Script" path="res://first_level.gd" id="1_lq0g4"]
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_q4ttp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://djxscqvgw0uy6" path="res://zipline.tscn" id="6_p4u7b"]
 [ext_resource type="PackedScene" uid="uid://b6mi2a647dqyv" path="res://pause_menu.tscn" id="7_6x4jh"]
 [ext_resource type="PackedScene" uid="uid://wmir60b8tbjr" path="res://death_collisions.tscn" id="7_di4xb"]
+[ext_resource type="PackedScene" uid="uid://p2oifhqlarvx" path="res://grapple.tscn" id="10_f1gyt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rx0l"]
 texture = ExtResource("2_xey84")
@@ -526,5 +527,11 @@ text = "Press Shift to use the zipline!"
 [node name="Death Collisions" parent="." instance=ExtResource("7_di4xb")]
 position = Vector2(3303, 2150)
 scale = Vector2(600, 13.905)
+
+[node name="Grapple" parent="." instance=ExtResource("10_f1gyt")]
+position = Vector2(1595, 503)
+
+[node name="Grapple2" parent="." instance=ExtResource("10_f1gyt")]
+position = Vector2(3191, 472)
 
 [connection signal="died" from="Death Collisions" to="Player" method="_on_death_collisions_died"]
