@@ -260,10 +260,9 @@ func _physics_process(delta: float) -> void:
 	
 
 func _process(delta: float) -> void:
-	pass
 	# die and respawn if health runs out or fell off map
-	#if health <= 0 or global_position.y > maxY:
-		#global_position = spawn
+	if health <= 0:
+		call_deferred("reset_player")
 
 
 #x is true
@@ -357,4 +356,6 @@ func _on_upper_collision_body_exited(body: TileMapLayer) -> void:
 
 
 func _on_death_collisions_died() -> void:
-	position = spawn
+	call_deferred("reset_player")
+func reset_player():
+	get_tree().reload_current_scene()

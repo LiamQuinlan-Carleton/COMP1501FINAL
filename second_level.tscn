@@ -460,4 +460,10 @@ position = Vector2(4199, 1348)
 position = Vector2(2758, 3511)
 scale = Vector2(500, 50)
 
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="died" from="Death Collisions" to="Player" method="_on_death_collisions_died"]
