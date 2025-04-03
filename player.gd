@@ -306,7 +306,7 @@ func _input(event: InputEvent) -> void:
 					animation.frame = current_frame + 1
 					
 	if event.is_action_pressed("Reset"): # For quick resets
-		position = spawn
+		get_tree().reload_current_scene()
 func _on_jump_length_timeout() -> void:
 	is_jumping = false
 
