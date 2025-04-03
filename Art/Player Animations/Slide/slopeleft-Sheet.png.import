@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byn2dc2xfvsbr"
-path="res://.godot/imported/runright-Sheet.png-92b388236225c1ebcfdc6a5e028bc468.ctex"
+uid="uid://bvbwk0qey8ogf"
+path="res://.godot/imported/slopeleft-Sheet.png-66244d82c87e1745e1e161d0689dd39b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Animations/runright-Sheet.png"
-dest_files=["res://.godot/imported/runright-Sheet.png-92b388236225c1ebcfdc6a5e028bc468.ctex"]
+source_file="res://Art/Player Animations/Slide/slopeleft-Sheet.png"
+dest_files=["res://.godot/imported/slopeleft-Sheet.png-66244d82c87e1745e1e161d0689dd39b.ctex"]
 
 [params]
 

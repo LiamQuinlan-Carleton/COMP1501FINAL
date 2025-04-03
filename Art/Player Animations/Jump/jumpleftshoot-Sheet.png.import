@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cypvruxfuh55e"
-path="res://.godot/imported/runleft-Sheet.png-9cd4aa1dce99f6e50c56504a02b1e9d0.ctex"
+uid="uid://c3rdivww58olk"
+path="res://.godot/imported/jumpleftshoot-Sheet.png-843d24d22d98216a04dde6effc0c227b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Animations/runleft-Sheet.png"
-dest_files=["res://.godot/imported/runleft-Sheet.png-9cd4aa1dce99f6e50c56504a02b1e9d0.ctex"]
+source_file="res://Art/Player Animations/Jump/jumpleftshoot-Sheet.png"
+dest_files=["res://.godot/imported/jumpleftshoot-Sheet.png-843d24d22d98216a04dde6effc0c227b.ctex"]
 
 [params]
 

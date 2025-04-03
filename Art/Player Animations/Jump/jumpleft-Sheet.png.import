@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyfs64oji8oty"
-path="res://.godot/imported/jumpright-Sheet.png-ce6804779fa6d27510c378c99e1a681d.ctex"
+uid="uid://coqigyw74e1n5"
+path="res://.godot/imported/jumpleft-Sheet.png-95836620e43b8dd9cc8d0852d886fc0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Animations/jumpright-Sheet.png"
-dest_files=["res://.godot/imported/jumpright-Sheet.png-ce6804779fa6d27510c378c99e1a681d.ctex"]
+source_file="res://Art/Player Animations/Jump/jumpleft-Sheet.png"
+dest_files=["res://.godot/imported/jumpleft-Sheet.png-95836620e43b8dd9cc8d0852d886fc0b.ctex"]
 
 [params]
 

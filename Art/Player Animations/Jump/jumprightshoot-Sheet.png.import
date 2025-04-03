@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cebh7tag2yiib"
-path="res://.godot/imported/sloperight-Sheet.png-294bd5abc371bc245b1906742b119631.ctex"
+uid="uid://cxlwxlxakt8jg"
+path="res://.godot/imported/jumprightshoot-Sheet.png-31f89f1565cf4493f6c77d1d832100c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Animations/sloperight-Sheet.png"
-dest_files=["res://.godot/imported/sloperight-Sheet.png-294bd5abc371bc245b1906742b119631.ctex"]
+source_file="res://Art/Player Animations/Jump/jumprightshoot-Sheet.png"
+dest_files=["res://.godot/imported/jumprightshoot-Sheet.png-31f89f1565cf4493f6c77d1d832100c8.ctex"]
 
 [params]
 
