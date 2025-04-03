@@ -66,6 +66,10 @@ var on_zipline = false
 # Level variables
 @export var spawn : Vector2 = Vector2(0, 0) # spawn point 
 
+var has_grapple : bool
+@export var grapple_line : Line2D
+var grapple_point : Vector2
+@export var grapple_force : float
 
 #The code bellow is in no way organized or easy to read. I apologize in advance.
 func _physics_process(delta: float) -> void:
@@ -217,6 +221,26 @@ func _physics_process(delta: float) -> void:
 	else:
 		apply_friction(floor_friction, air_resistance, sliding_friction, is_on_floor(), delta, true)
 	
+	if Input.is_action_just_pressed("Right Click"):
+		var space_state = get_world_2d().direct_space_state
+		var query = PhysicsRayQueryParameters2D.create(position, get_global_mouse_position())
+		query.collide_with_areas = true
+		query.collide_with_bodies = false
+		query.collision_mask = 2
+		var result = space_state.intersect_ray(query)
+		if result:
+			has_grapple = true
+			grapple_point = result.collider.get_parent().position
+			grapple_line.show()
+			print("Hello")
+	if Input.is_action_pressed("Right Click") and has_grapple:
+		velocity += grapple_force * Vector2(grapple_point - position).normalized()
+		grapple_line.set_point_position(0, Vector2(0,0))
+		grapple_line.set_point_position(1, position - grapple_point)
+	if Input.is_action_just_released("Right Click"):
+		has_grapple = false
+		grapple_line.hide()
+	
 	Global.player_position = global_position
 	
 	move_and_slide()
@@ -265,6 +289,7 @@ func apply_friction(f_frict : float, a_resist : float, s_frict : float, floor : 
 
 # Handle inputs
 func _input(event: InputEvent) -> void:
+	
 	# Handle's shooting input
 	if event.is_action_pressed("Left Click"):
 		if can_shoot:
