@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ij7cn13her84"
-path="res://.godot/imported/slideright-Sheet.png-16ee06d5d64e9c3e9fe6f5d2b6324b7a.ctex"
+uid="uid://b7gc1rtmsayvo"
+path="res://.godot/imported/shootleft-Sheet.png-e551dfc7f9c5340cbcdd60493e28d265.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Animations/slideright-Sheet.png"
-dest_files=["res://.godot/imported/slideright-Sheet.png-16ee06d5d64e9c3e9fe6f5d2b6324b7a.ctex"]
+source_file="res://Art/Player Animations/Run/shootleft-Sheet.png"
+dest_files=["res://.godot/imported/shootleft-Sheet.png-e551dfc7f9c5340cbcdd60493e28d265.ctex"]
 
 [params]
 

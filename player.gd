@@ -144,12 +144,12 @@ func _physics_process(delta: float) -> void:
 	
 	#Crouch control
 	if Input.is_action_just_pressed("crouch"):
-		if (velocity.y > 25):
+		if (velocity.y > 25) and is_on_floor():
 			if (velocity.x > 0):
 				animation.play("Slope Right Start")
 			else:
 				animation.play("Slope Left Start")
-		else:
+		elif is_on_floor():
 			if (velocity.x > 0):
 				animation.play("Slide Right Start")
 			else:
@@ -158,14 +158,14 @@ func _physics_process(delta: float) -> void:
 		player_hitbox.position.y = 13
 		
 		crouching = true
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.3).timeout
 		update_frame = true
-		if (velocity.y > 0):
+		if (velocity.y > 0) and is_on_floor():
 			if (velocity.x > 0):
 				animation.play("Slope Right")
 			else:
 				animation.play("Slope Left")
-		else:
+		elif is_on_floor():
 			if (velocity.x > 0):
 				animation.play("Slide Right")
 			else:
@@ -197,11 +197,21 @@ func _physics_process(delta: float) -> void:
 			current_frame = animation.frame
 		else:
 			animation.play("Idle")
-	if is_on_wall() and !crouching and !is_jumping and can_shoot:
+			current_frame = animation.frame
+	elif is_on_wall() and !crouching and !is_jumping and can_shoot:
 		if (l_dir == 1):
 			animation.play("Wall Slide Right")
 		elif (l_dir == -1):
 			animation.play("Wall Slide Left")
+	elif (velocity.y > 70) and can_shoot:
+		if (velocity.x > 0):
+			animation.play("Jump Right")
+			animation.frame = 8
+			animation.pause()
+		else:
+			animation.play("Jump Left")
+			animation.frame = 8
+			animation.pause()
 	
 	if Input.is_action_just_pressed("Right"):
 		l_dir= 1
@@ -289,23 +299,50 @@ func apply_friction(f_frict : float, a_resist : float, s_frict : float, floor : 
 
 # Handle inputs
 func _input(event: InputEvent) -> void:
-	
 	# Handle's shooting input
 	if event.is_action_pressed("Left Click"):
 		if can_shoot:
 			Global.shoot.emit()
 			can_shoot = false
 			shoot_timer.start(shoot_cooldown)
-			if is_on_floor():
+			if is_on_floor() and velocity.x == 0:
+				animation.play("Idle Shoot")
+				animation.frame = current_frame + 1
+			elif is_on_floor() and !crouching:
 				if (velocity.x > 0):
-					animation.play("Shoot Right")
+					animation.play("Run Shoot Right")
 					animation.frame = current_frame + 1
 				elif (velocity.x < 0):
-					animation.play("Shoot Left")
+					animation.play("Run Shoot Left")
 					animation.frame = current_frame + 1
-					
+			elif is_on_floor() and crouching:
+				if (velocity.y > 50):
+					if (velocity.x > 0):
+						animation.play("Slope Right Shoot")
+					else:
+						animation.play("Slope Left Shoot")
+				else:
+					if (velocity.x > 0):
+						animation.play("Slide Right Shoot")
+					else:
+						animation.play("Slide Left Shoot")
+			elif is_on_wall():
+				if (l_dir == -1):
+					animation.play("Wall Slide Shoot Right")
+					animation.frame = current_frame + 1
+				elif (l_dir == 1):
+					animation.play("Wall Slide Shoot Left")
+					animation.frame = current_frame + 1
+			else:
+				if (velocity.x > 0):
+					animation.play("Jump Shoot Right")
+					animation.frame = current_frame + 1
+				elif (velocity.x < 0):
+					animation.play("Jump Shoot Left")
+					animation.frame = current_frame + 1
 	if event.is_action_pressed("Reset"): # For quick resets
 		position = spawn
+
 func _on_jump_length_timeout() -> void:
 	is_jumping = false
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bttculobdbdvh"
-path="res://.godot/imported/slideleft-Sheet.png-422af26dcd829b74b29c2faa6f8f002e.ctex"
+uid="uid://cebh7tag2yiib"
+path="res://.godot/imported/sloperight-Sheet.png-16d6944f243fe65ae6c4e7f50f133daf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Animations/slideleft-Sheet.png"
-dest_files=["res://.godot/imported/slideleft-Sheet.png-422af26dcd829b74b29c2faa6f8f002e.ctex"]
+source_file="res://Art/Player Animations/Slide/sloperight-Sheet.png"
+dest_files=["res://.godot/imported/sloperight-Sheet.png-16d6944f243fe65ae6c4e7f50f133daf.ctex"]
 
 [params]
 
