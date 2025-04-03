@@ -4,7 +4,7 @@ extends Node2D
 @onready var main_node = get_parent()
 
 @export var speed = 50
-@export var acceleration: float = 1.1
+@export var acceleration = 1.1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

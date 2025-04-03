@@ -894,6 +894,7 @@ jump_buffer_timer = NodePath("JumpBuffer")
 cyote_time_timer = NodePath("CyoteTime")
 grapple_line = NodePath("Line2D")
 grapple_force = 100.0
+grapple_distance = 1000.0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -940,6 +941,7 @@ position = Vector2(-0.5, -16)
 shape = SubResource("RectangleShape2D_fmohp")
 
 [node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
 
 [connection signal="timeout" from="JumpLength" to="." method="_on_jump_length_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
