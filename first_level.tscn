@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://djxscqvgw0uy6" path="res://zipline.tscn" id="6_p4u7b"]
 [ext_resource type="PackedScene" uid="uid://b6mi2a647dqyv" path="res://pause_menu.tscn" id="7_6x4jh"]
 [ext_resource type="PackedScene" uid="uid://wmir60b8tbjr" path="res://death_collisions.tscn" id="7_di4xb"]
-[ext_resource type="PackedScene" path="res://grapple.tscn" id="10_f1gyt"]
+[ext_resource type="PackedScene" uid="uid://p2oifhqlarvx" path="res://grapple.tscn" id="10_f1gyt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rx0l"]
 texture = ExtResource("2_xey84")

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_xc4sc"]
 [ext_resource type="Texture2D" uid="uid://1eumra722j5d" path="res://Art/TileSets/buildingTileset.png" id="2_gwjk7"]
-[ext_resource type="PackedScene" path="res://grapple.tscn" id="3_qx24y"]
+[ext_resource type="PackedScene" uid="uid://p2oifhqlarvx" path="res://grapple.tscn" id="3_qx24y"]
 [ext_resource type="PackedScene" uid="uid://c8j55ah1v7fy2" path="res://spawner.tscn" id="3_yud08"]
 [ext_resource type="PackedScene" uid="uid://bjv4ayd50t6r0" path="res://enemy.tscn" id="4_wkeih"]
 [ext_resource type="PackedScene" uid="uid://djxscqvgw0uy6" path="res://zipline.tscn" id="6_2dxw8"]
