@@ -1,5 +1,5 @@
 extends Node2D
-
+@onready var end = get_parent().get_child(3)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,5 +11,5 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
-	get_tree().change_scene_to_file("res://start_screen.tscn")
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	end.end_level()

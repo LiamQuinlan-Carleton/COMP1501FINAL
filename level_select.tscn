@@ -35,6 +35,7 @@ offset_top = 427.0
 offset_right = 605.0
 offset_bottom = 491.0
 level_name = "Level 3"
+level_path = "res://third_level.tscn"
 
 [node name="PlayerIcon" parent="." instance=ExtResource("3_awpb3")]
 layout_mode = 0
