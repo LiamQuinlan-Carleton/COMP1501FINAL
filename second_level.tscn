@@ -466,12 +466,6 @@ position = Vector2(4199, 1348)
 position = Vector2(2758, 3511)
 scale = Vector2(500, 50)
 
-[node name="Timer" type="Timer" parent="."]
-
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource("7_br1qf")]
@@ -488,7 +482,7 @@ grow_horizontal = 2
 label_settings = SubResource("LabelSettings_ftpno")
 metadata/_edit_use_anchors_ = true
 
-[node name="Timer2" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="."]
 wait_time = 40.0
 autostart = true
 

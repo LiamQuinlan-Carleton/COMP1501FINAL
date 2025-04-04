@@ -243,7 +243,6 @@ func _physics_process(delta: float) -> void:
 			has_grapple = true
 			grapple_point = result.collider.get_parent().position
 			grapple_line.show()
-			print("Hello")
 	if Input.is_action_pressed("Right Click") and has_grapple:
 		velocity += grapple_force * Vector2(grapple_point - position).normalized()
 		grapple_line.set_point_position(0, Vector2(0,0))
