@@ -190,10 +190,10 @@ func _physics_process(delta: float) -> void:
 	
 	#Run control
 	if is_on_floor() and !crouching and !is_jumping and can_shoot:
-		if (velocity.x > 0):
+		if (velocity.x > 10):
 			animation.play("Run Right")
 			current_frame = animation.frame
-		elif (velocity.x < 0):
+		elif (velocity.x < -10):
 			animation.play("Run Left")
 			current_frame = animation.frame
 		else:
@@ -204,7 +204,7 @@ func _physics_process(delta: float) -> void:
 			animation.play("Wall Slide Right")
 		elif (l_dir == -1):
 			animation.play("Wall Slide Left")
-	elif (velocity.y > 70) and can_shoot:
+	elif (velocity.y > 70) and !crouching and !is_jumping and can_shoot:
 		if (velocity.x > 0):
 			animation.play("Jump Right")
 			animation.frame = 8
