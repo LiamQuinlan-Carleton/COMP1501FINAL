@@ -1198,7 +1198,7 @@ shoot_timer = NodePath("ShootCooldown")
 jump_buffer_timer = NodePath("JumpBuffer")
 cyote_time_timer = NodePath("CyoteTime")
 grapple_line = NodePath("Line2D")
-grapple_force = 100.0
+grapple_force = 65.0
 grapple_distance = 1000.0
 metadata/_edit_group_ = true
 

@@ -14,6 +14,8 @@ point_count = 2
 
 [node name="Zipline" type="Node2D" groups=["Zipline"]]
 script = ExtResource("1_gwui3")
+speed = 1000
+acceleration = 10.0
 
 [node name="Area2D" type="Area2D" parent="."]
 
