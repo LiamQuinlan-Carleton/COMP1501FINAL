@@ -20,5 +20,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("deal_damage"):
 		body.deal_damage(1)
 		queue_free()
+	elif body.has_method("_input"):
+		pass
 	else:
 		queue_free()

@@ -458,7 +458,7 @@ tile_set = SubResource("TileSet_j570n")
 [node name="Spawner" parent="." instance=ExtResource("4_aeghy")]
 
 [node name="Dummy" parent="." instance=ExtResource("5_2bh44")]
-position = Vector2(5220, 415)
+position = Vector2(5215, 414)
 
 [node name="Dummy2" parent="." instance=ExtResource("5_2bh44")]
 position = Vector2(5440, 421)
@@ -508,10 +508,10 @@ anchor_left = 2.062
 anchor_top = 0.232
 anchor_right = 2.062
 anchor_bottom = 0.232
-offset_left = 2594.58
-offset_top = 100.664
-offset_right = 3189.58
-offset_bottom = 123.664
+offset_left = 1016.96
+offset_top = 70.44
+offset_right = 1611.96
+offset_bottom = 93.44
 text = "Left Click to shoot enimies! In a real mission be careful, they will shoot back...
 "
 
