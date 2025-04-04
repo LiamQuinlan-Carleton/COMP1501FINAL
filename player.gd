@@ -93,6 +93,31 @@ func _physics_process(delta: float) -> void:
 	
 	#if Input.is_action_pressed("Shift"):
 		#velocity.x -= 1000 * delta
+	# Animation control
+	if is_on_floor() and !crouching and !is_jumping and can_shoot:
+		if (velocity.x > 10):
+			animation.play("Run Right")
+			current_frame = animation.frame
+		elif (velocity.x < -10):
+			animation.play("Run Left")
+			current_frame = animation.frame
+		else:
+			animation.play("Idle")
+			current_frame = animation.frame
+	elif is_on_wall() and !crouching and !is_jumping and can_shoot:
+		if (l_dir == 1):
+			animation.play("Wall Slide Right")
+		elif (l_dir == -1):
+			animation.play("Wall Slide Left")
+	elif (velocity.y > 70) and !crouching and !is_jumping and can_shoot:
+		if (l_dir == 1):
+			animation.play("Jump Right")
+			animation.frame = 8
+			animation.pause()
+		else:
+			animation.play("Jump Left")
+			animation.frame = 8
+			animation.pause()
 	
 	#Jump control
 	if Input.is_action_just_pressed("Jump"):
@@ -119,6 +144,16 @@ func _physics_process(delta: float) -> void:
 		want_jump = false
 		is_jumping = true
 		jump_timer.start(jump_length)
+		if is_on_wall():
+			if (l_dir < 0):
+				animation.play("Jump Right")
+			else:
+				animation.play("Jump Left")
+		else:
+			if (l_dir > 0):
+				animation.play("Jump Right")
+			else:
+				animation.play("Jump Left")
 	
 	if is_on_wall() or (can_jump and lastSurface == "wall"):
 		apply_friction(wall_friction, air_resistance, sliding_friction, false, delta, false)
@@ -130,6 +165,16 @@ func _physics_process(delta: float) -> void:
 				velocity.x = -1*speed
 			else:
 				velocity.x = speed
+			if is_on_wall():
+				if (l_dir < 0):
+					animation.play("Jump Right")
+				else:
+					animation.play("Jump Left")
+			else:
+				if (l_dir > 0):
+					animation.play("Jump Right")
+				else:
+					animation.play("Jump Left")
 	
 	if is_on_floor() or is_on_wall():
 		can_jump = true
@@ -159,14 +204,14 @@ func _physics_process(delta: float) -> void:
 		player_hitbox.position.y = 13
 		
 		crouching = true
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.4).timeout
 		update_frame = true
-		if (velocity.y > 0) and is_on_floor():
+		if (velocity.y > 0) and is_on_floor() and can_shoot:
 			if (velocity.x > 0):
 				animation.play("Slope Right")
 			else:
 				animation.play("Slope Left")
-		elif is_on_floor():
+		elif is_on_floor() and can_shoot:
 			if (velocity.x > 0):
 				animation.play("Slide Right")
 			else:
@@ -176,7 +221,7 @@ func _physics_process(delta: float) -> void:
 	if want_to_stand and crouching and can_stand:
 		reset_after_crouch()
 	
-	if is_on_floor() and crouching and !is_jumping and update_frame:
+	if is_on_floor() and crouching and !is_jumping and update_frame and can_shoot:
 		if (velocity.y > 50):
 			if (velocity.x > 0):
 				animation.play("Slope Right")
@@ -189,31 +234,6 @@ func _physics_process(delta: float) -> void:
 				animation.play("Slide Left")
 	
 	#Run control
-	if is_on_floor() and !crouching and !is_jumping and can_shoot:
-		if (velocity.x > 0):
-			animation.play("Run Right")
-			current_frame = animation.frame
-		elif (velocity.x < 0):
-			animation.play("Run Left")
-			current_frame = animation.frame
-		else:
-			animation.play("Idle")
-			current_frame = animation.frame
-	elif is_on_wall() and !crouching and !is_jumping and can_shoot:
-		if (l_dir == 1):
-			animation.play("Wall Slide Right")
-		elif (l_dir == -1):
-			animation.play("Wall Slide Left")
-	elif (velocity.y > 70) and can_shoot:
-		if (velocity.x > 0):
-			animation.play("Jump Right")
-			animation.frame = 8
-			animation.pause()
-		else:
-			animation.play("Jump Left")
-			animation.frame = 8
-			animation.pause()
-	
 	if Input.is_action_just_pressed("Right"):
 		l_dir= 1
 	elif Input.is_action_just_released("Right") and Input.is_action_pressed("Left"):
@@ -256,7 +276,6 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	
 	# if within zipline's interaction area
 	if in_zipline_area:
 		# when holding interact, player follows zipline's path
@@ -264,19 +283,19 @@ func _physics_process(delta: float) -> void:
 			reparent(zipline_area)
 			on_zipline = true
 	# when releasing interact, player reparents itself to main, no longer follows zipline's path
+
 		if on_zipline:
 			#print(get_parent().get_parent().get_parent().at_end)
 			if Input.is_action_just_released("Shift") or get_parent().get_parent().get_parent().at_end :
 				reparent(main_node)
 				on_zipline = false 
 				in_zipline_area = false
-	
 
+# Runs every frame
 func _process(delta: float) -> void:
 	# die and respawn if health runs out or fell off map
 	if health <= 0:
 		call_deferred("reset_player")
-
 
 #x is true
 func apply_friction(f_frict : float, a_resist : float, s_frict : float, floor : bool, delta : float, x_or_y : bool):
@@ -344,6 +363,7 @@ func _input(event: InputEvent) -> void:
 					animation.frame = current_frame + 1
 	if event.is_action_pressed("Reset"): # For quick resets
 		get_tree().reload_current_scene()
+
 func _on_jump_length_timeout() -> void:
 	is_jumping = false
 
@@ -390,16 +410,14 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 	if (!is_instance_of(get_parent(), PathFollow2D)):
 		in_zipline_area = false;
 
-
 func _on_upper_collision_body_entered(body: TileMapLayer) -> void:
 	can_stand = false
-
 
 func _on_upper_collision_body_exited(body: TileMapLayer) -> void:
 	can_stand = true
 
-
 func _on_death_collisions_died() -> void:
 	call_deferred("reset_player")
+
 func reset_player():
 	get_tree().reload_current_scene()

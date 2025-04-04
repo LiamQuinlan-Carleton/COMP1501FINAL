@@ -434,6 +434,8 @@ terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
 sources/1 = SubResource("TileSetAtlasSource_nr6rj")
 sources/0 = SubResource("TileSetAtlasSource_6yn7b")
 sources/2 = SubResource("TileSetAtlasSource_36x21")
+[sub_resource type="LabelSettings" id="LabelSettings_ftpno"]
+font_size = 25
 
 [node name="Second Level" type="Node"]
 
