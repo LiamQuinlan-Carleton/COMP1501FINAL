@@ -1,5 +1,5 @@
-extends Node
-
+extends Node2D
+@onready var end = get_parent().get_child(3)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,4 +8,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$CanvasLayer/Label.text = "%d:%02d" % [floor($Timer.time_left / 60), int($Timer.time_left) % 60]
+	pass
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	end.end_level()
