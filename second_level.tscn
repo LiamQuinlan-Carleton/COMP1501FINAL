@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://wmir60b8tbjr" path="res://death_collisions.tscn" id="6_dyod4"]
 [ext_resource type="PackedScene" uid="uid://b6mi2a647dqyv" path="res://pause_menu.tscn" id="7_br1qf"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5k68v"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6yn7b"]
 texture = ExtResource("3_ss3fm")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -36,7 +36,7 @@ texture = ExtResource("3_ss3fm")
 1:3/0/terrain_set = 0
 1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dd5or"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nr6rj"]
 texture = ExtResource("2_xytki")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -415,7 +415,7 @@ texture = ExtResource("2_xytki")
 11:3/0/terrains_peering_bit/bottom_side = 0
 11:3/0/terrains_peering_bit/left_side = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1k32"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_36x21"]
 texture = ExtResource("2_xytki")
 12:0/0 = 0
 12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -6, -8, -6, -8, -6, -2, -8, -2)
@@ -430,9 +430,9 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
-sources/1 = SubResource("TileSetAtlasSource_dd5or")
-sources/0 = SubResource("TileSetAtlasSource_5k68v")
-sources/2 = SubResource("TileSetAtlasSource_g1k32")
+sources/1 = SubResource("TileSetAtlasSource_nr6rj")
+sources/0 = SubResource("TileSetAtlasSource_6yn7b")
+sources/2 = SubResource("TileSetAtlasSource_36x21")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ftpno"]
 font_size = 25
@@ -466,6 +466,12 @@ position = Vector2(4199, 1348)
 position = Vector2(2758, 3511)
 scale = Vector2(500, 50)
 
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource("7_br1qf")]
@@ -482,7 +488,7 @@ grow_horizontal = 2
 label_settings = SubResource("LabelSettings_ftpno")
 metadata/_edit_use_anchors_ = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer2" type="Timer" parent="."]
 wait_time = 40.0
 autostart = true
 

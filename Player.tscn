@@ -1,10 +1,11 @@
-[gd_scene load_steps=170 format=3 uid="uid://bnlswq05iqbuc"]
+[gd_scene load_steps=171 format=3 uid="uid://bnlswq05iqbuc"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_i1o7x"]
 [ext_resource type="Texture2D" uid="uid://coqigyw74e1n5" path="res://Art/Player Animations/Jump/jumpleft-Sheet.png" id="2_a5n8m"]
 [ext_resource type="Texture2D" uid="uid://bvykdw1mjhevr" path="res://Art/Player Animations/Idle/idle-Sheet.png" id="2_lm2dn"]
 [ext_resource type="Texture2D" uid="uid://byn2dc2xfvsbr" path="res://Art/Player Animations/Run/runright-Sheet.png" id="2_oilqb"]
 [ext_resource type="Texture2D" uid="uid://cypvruxfuh55e" path="res://Art/Player Animations/Run/runleft-Sheet.png" id="2_oolm3"]
+[ext_resource type="Script" path="res://camera.gd" id="2_x68m0"]
 [ext_resource type="Texture2D" uid="uid://bw4y8nua0ji5j" path="res://Art/Player Animations/Idle/idleshoot-Sheet.png" id="3_al4fe"]
 [ext_resource type="Texture2D" uid="uid://dyfs64oji8oty" path="res://Art/Player Animations/Jump/jumpright-Sheet.png" id="3_i0ok4"]
 [ext_resource type="Texture2D" uid="uid://bttculobdbdvh" path="res://Art/Player Animations/Slide/slideleft-Sheet.png" id="6_j7gpe"]
@@ -1197,7 +1198,7 @@ shoot_timer = NodePath("ShootCooldown")
 jump_buffer_timer = NodePath("JumpBuffer")
 cyote_time_timer = NodePath("CyoteTime")
 grapple_line = NodePath("Line2D")
-grapple_force = 100.0
+grapple_force = 65.0
 grapple_distance = 1000.0
 metadata/_edit_group_ = true
 
@@ -1231,6 +1232,8 @@ offset_bottom = -69.0
 shape = SubResource("RectangleShape2D_eqt3d")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+script = ExtResource("2_x68m0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

@@ -467,7 +467,6 @@ position = Vector2(5440, 421)
 position = Vector2(2558, 633)
 rotation = 0.645772
 scale = Vector2(2, 1)
-speed = 1000
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
