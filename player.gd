@@ -263,7 +263,7 @@ func _physics_process(delta: float) -> void:
 			has_grapple = true
 			grapple_point = result.collider.get_parent().position
 			grapple_line.show()
-			print("Hello")
+			#print("Hello")
 	if Input.is_action_pressed("Right Click") and has_grapple:
 		velocity += grapple_force * Vector2(grapple_point - position).normalized()
 		grapple_line.set_point_position(0, Vector2(0,0))
@@ -284,9 +284,12 @@ func _physics_process(delta: float) -> void:
 			on_zipline = true
 	# when releasing interact, player reparents itself to main, no longer follows zipline's path
 
-		if Input.is_action_just_released("Shift"):
-			reparent(main_node)
-			on_zipline = false
+		if on_zipline:
+			#print(get_parent().get_parent().get_parent().at_end)
+			if Input.is_action_just_released("Shift") or get_parent().get_parent().get_parent().at_end :
+				reparent(main_node)
+				on_zipline = false 
+				in_zipline_area = false
 
 # Runs every frame
 func _process(delta: float) -> void:
@@ -387,20 +390,25 @@ func reset_after_crouch():
 	update_frame = false
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	
 	var area_array = $Area2D.get_overlapping_areas()
-	if (area_array.size() > 1):
-		in_zipline_area = true;
+	in_zipline_area = true
+	#if (area_array.size() > 1):
+		#in_zipline_area = true;
 	
 	# set zipline_area to the area of the zipline the player's overlapping with
-	for a in area_array:
-		for b in a.get_parent().get_children() :
-			if is_instance_of(b, Path2D) :
-				for c in b.get_children():
-					if is_instance_of(c, PathFollow2D):
-						zipline_area = c
+	
+	for a in area_array[0].get_parent().get_children() :
+		if is_instance_of(a, Path2D) :
+			for b in a.get_children():
+				if is_instance_of(b, PathFollow2D):
+					zipline_area = b
+					
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	in_zipline_area = false;
+	#print("exited ", area, " ", area.get_parent())
+	if (!is_instance_of(get_parent(), PathFollow2D)):
+		in_zipline_area = false;
 
 func _on_upper_collision_body_entered(body: TileMapLayer) -> void:
 	can_stand = false

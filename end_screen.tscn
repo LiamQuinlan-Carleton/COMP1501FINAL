@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://dppagxjo7btbq"]
+
+[ext_resource type="Script" path="res://end_screen.gd" id="1_guhhl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_imxre"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_g6x12"]
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_fidhv"]
+font_size = 38
+
+[node name="end_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_guhhl")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_imxre")
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -350.0
+offset_right = 300.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 69
+
+[node name="Complete" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "LEVEL COMPLETE!"
+label_settings = SubResource("LabelSettings_g6x12")
+horizontal_alignment = 1
+
+[node name="Time_left" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "0
+"
+label_settings = SubResource("LabelSettings_g6x12")
+horizontal_alignment = 1
+
+[node name="stats" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "m a n  h o r s e"
+label_settings = SubResource("LabelSettings_fidhv")
+horizontal_alignment = 1
+
+[node name="Retry" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Retry
+"
+
+[node name="Return" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Return"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/Return" to="." method="_on_return_pressed"]

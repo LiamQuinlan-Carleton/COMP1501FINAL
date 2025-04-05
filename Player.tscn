@@ -28,7 +28,7 @@ size = Vector2(28, 44)
 [sub_resource type="QuadMesh" id="QuadMesh_nibuc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqt3d"]
-size = Vector2(38, 44)
+size = Vector2(38, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o2dnu"]
 atlas = ExtResource("2_lm2dn")
@@ -1227,13 +1227,19 @@ offset_right = -81.0
 offset_bottom = -69.0
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_eqt3d")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 script = ExtResource("2_x68m0")
+distance = 1.0
+max_distance = 250.0
+snap = 0.02
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
