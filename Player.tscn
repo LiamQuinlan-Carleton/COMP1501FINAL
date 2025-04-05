@@ -1234,6 +1234,9 @@ shape = SubResource("RectangleShape2D_eqt3d")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 script = ExtResource("2_x68m0")
+distance = 1.0
+max_distance = 250.0
+snap = 0.02
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
