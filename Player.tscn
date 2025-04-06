@@ -1240,6 +1240,7 @@ script = ExtResource("2_x68m0")
 distance = 1.0
 max_distance = 250.0
 snap = 0.02
+follow_mouse = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
