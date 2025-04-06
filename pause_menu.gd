@@ -2,6 +2,7 @@ extends Control
 
 @onready var ended = get_parent().get_parent().get_child(3)
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
@@ -33,6 +34,7 @@ func _on_resume_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	resume()
+	Global.attempts_taken += 1
 	get_tree().reload_current_scene()
 
 

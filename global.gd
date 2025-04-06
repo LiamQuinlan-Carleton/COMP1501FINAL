@@ -7,6 +7,8 @@ signal enemy_shoot
 
 #Globally tracks player's current global position
 var player_position = Vector2(0,0)
+#Globally tracks player's current attempts taken
+var attempts_taken : int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

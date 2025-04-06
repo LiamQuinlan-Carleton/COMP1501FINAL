@@ -451,7 +451,7 @@ tile_set = SubResource("TileSet_5177o")
 position = Vector2(7007, 2775)
 
 [node name="end_screen" parent="." instance=ExtResource("6_m63de")]
-time = 40.0
+time = 60.0
 
 [node name="Spawner" parent="." instance=ExtResource("4_ncos6")]
 position = Vector2(67, -9)

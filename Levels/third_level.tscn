@@ -1,11 +1,14 @@
-[gd_scene load_steps=13 format=4 uid="uid://dgkw4jjr8nm3v"]
+[gd_scene load_steps=14 format=4 uid="uid://dgkw4jjr8nm3v"]
 
-[ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_a0qd8"]
-[ext_resource type="Texture2D" uid="uid://d25jysgwcmlwo" path="res://Art/TileSets/slideTileset.png" id="2_o1g45"]
-[ext_resource type="Texture2D" uid="uid://1eumra722j5d" path="res://Art/TileSets/buildingTileset.png" id="3_cjmfv"]
-[ext_resource type="PackedScene" uid="uid://c8j55ah1v7fy2" path="res://spawner.tscn" id="4_8laax"]
-[ext_resource type="PackedScene" uid="uid://p2oifhqlarvx" path="res://grapple.tscn" id="5_y5hrd"]
-[ext_resource type="PackedScene" uid="uid://djxscqvgw0uy6" path="res://zipline.tscn" id="6_p8mri"]
+[ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_ubsk3"]
+[ext_resource type="Texture2D" uid="uid://d25jysgwcmlwo" path="res://Art/TileSets/slideTileset.png" id="2_piggx"]
+[ext_resource type="Texture2D" uid="uid://1eumra722j5d" path="res://Art/TileSets/buildingTileset.png" id="3_cf5i7"]
+[ext_resource type="PackedScene" uid="uid://biubdrqr3flbw" path="res://end_point.tscn" id="4_ruyhg"]
+[ext_resource type="PackedScene" uid="uid://c8j55ah1v7fy2" path="res://spawner.tscn" id="4_sie2h"]
+[ext_resource type="PackedScene" uid="uid://dppagxjo7btbq" path="res://end_screen.tscn" id="5_wdq1n"]
+[ext_resource type="PackedScene" uid="uid://dsb33ibrbu2tw" path="res://grapple.tscn" id="5_yvm5f"]
+[ext_resource type="PackedScene" uid="uid://djxscqvgw0uy6" path="res://zipline.tscn" id="6_qon8c"]
+[ext_resource type="PackedScene" uid="uid://b6mi2a647dqyv" path="res://pause_menu.tscn" id="9_puvgw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jhpfp"]
 texture = ExtResource("2_o1g45")
@@ -447,7 +450,7 @@ tile_set = SubResource("TileSet_826ol")
 position = Vector2(8804, -225)
 
 [node name="end_screen" parent="." instance=ExtResource("5_wdq1n")]
-time = 30.0
+time = 80.0
 
 [node name="Spawner" parent="." instance=ExtResource("4_sie2h")]
 position = Vector2(67, -9)
@@ -482,3 +485,7 @@ acceleration = 1.3
 
 [node name="Grapple6" parent="." instance=ExtResource("5_y5hrd")]
 position = Vector2(8211, -271)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("9_puvgw")]
