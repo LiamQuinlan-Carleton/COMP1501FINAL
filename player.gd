@@ -365,8 +365,9 @@ func _input(event: InputEvent) -> void:
 					animation.play("Jump Shoot Left")
 					animation.frame = current_frame + 1
 			ammo.play("Shoot")
-			await get_tree().create_timer(0.199).timeout
+			await get_tree().create_timer(0.2).timeout
 			ammo.pause()
+			ammo.frame = 24 - current_ammo * 4
 			if current_ammo == 0:
 				ammo.play("Reload")
 				await get_tree().create_timer(1.51).timeout
