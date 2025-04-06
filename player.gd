@@ -47,12 +47,14 @@ var crouching: bool = false # True if the player is crouching, false otherwise
 var want_to_stand: bool = false # True if the player wants to uncrouch
 var can_stand: bool = true
 
-#Grab hp label node
-@onready var hp = $"HP Label"
+#Grab hp progress bar node and ammo animated sprite node
+@onready var hp = $"Camera2D/Health Bar"
+@onready var ammo = $"Camera2D/Ammo Bar"
+var current_ammo : int = 6
 #Grab animatedsprite2d node
 @onready var animation = $AnimatedSprite2D
-var current_frame
-var update_frame = false
+var current_frame : int
+var update_frame : bool = false
 #Grab player collisionshape
 @onready var player_hitbox = $CollisionShape2D
 
@@ -74,7 +76,7 @@ var grapple_point : Vector2
 
 #The code bellow is in no way organized or easy to read. I apologize in advance.
 func _physics_process(delta: float) -> void:
-	hp.text = "Current HP: " + str(health)
+	hp.value = health
 	velocity = get_real_velocity()
 	
 	#if (global_position.y > 1300):
@@ -322,10 +324,11 @@ func apply_friction(f_frict : float, a_resist : float, s_frict : float, floor : 
 func _input(event: InputEvent) -> void:
 	# Handle's shooting input
 	if event.is_action_pressed("Left Click"):
-		if can_shoot:
-			Global.shoot.emit()
+		if can_shoot and current_ammo > 0:
 			can_shoot = false
+			Global.shoot.emit()
 			shoot_timer.start(shoot_cooldown)
+			current_ammo -= 1
 			if is_on_floor() and velocity.x == 0:
 				animation.play("Idle Shoot")
 				animation.frame = current_frame + 1
@@ -361,6 +364,13 @@ func _input(event: InputEvent) -> void:
 				elif (velocity.x < 0):
 					animation.play("Jump Shoot Left")
 					animation.frame = current_frame + 1
+			ammo.play("Shoot")
+			await get_tree().create_timer(0.199).timeout
+			ammo.pause()
+			if current_ammo == 0:
+				ammo.play("Reload")
+				await get_tree().create_timer(1.51).timeout
+				current_ammo = 6
 	if event.is_action_pressed("Reset"): # For quick resets
 		get_tree().reload_current_scene()
 
