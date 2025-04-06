@@ -1619,6 +1619,7 @@ sprite_frames = SubResource("SpriteFrames_2s8ax")
 animation = &"Shoot"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_83j4p")
 animation = &"Run Left"
@@ -1631,7 +1632,9 @@ position = Vector2(-0.5, -16)
 shape = SubResource("RectangleShape2D_fmohp")
 
 [node name="Line2D" type="Line2D" parent="."]
+z_index = -1
 points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(0, 0, 0, 1)
 
 [connection signal="timeout" from="JumpLength" to="." method="_on_jump_length_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]
