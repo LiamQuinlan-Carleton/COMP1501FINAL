@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://djxscqvgw0uy6" path="res://zipline.tscn" id="6_qon8c"]
 [ext_resource type="PackedScene" uid="uid://b6mi2a647dqyv" path="res://pause_menu.tscn" id="9_puvgw"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vqgin"]
-texture = ExtResource("2_piggx")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jhpfp"]
+texture = ExtResource("2_o1g45")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8)
@@ -37,8 +37,8 @@ texture = ExtResource("2_piggx")
 1:3/0/terrain_set = 0
 1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r40qb"]
-texture = ExtResource("3_cf5i7")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uh65u"]
+texture = ExtResource("3_cjmfv")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -416,8 +416,8 @@ texture = ExtResource("3_cf5i7")
 11:3/0/terrains_peering_bit/bottom_side = 0
 11:3/0/terrains_peering_bit/left_side = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s5okv"]
-texture = ExtResource("3_cf5i7")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r0uyw"]
+texture = ExtResource("3_cjmfv")
 12:0/0 = 0
 12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -6, -8, -6, -8, -6, -2, -8, -2)
 12:1/0 = 0
@@ -431,14 +431,14 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
-sources/1 = SubResource("TileSetAtlasSource_r40qb")
-sources/0 = SubResource("TileSetAtlasSource_vqgin")
-sources/2 = SubResource("TileSetAtlasSource_s5okv")
+sources/1 = SubResource("TileSetAtlasSource_uh65u")
+sources/0 = SubResource("TileSetAtlasSource_jhpfp")
+sources/2 = SubResource("TileSetAtlasSource_r0uyw")
 
 [node name="Third Level" type="Node"]
 
-[node name="Player" parent="." instance=ExtResource("1_ubsk3")]
-position = Vector2(-199, -53)
+[node name="Player" parent="." instance=ExtResource("1_a0qd8")]
+position = Vector2(-104, -24)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -455,19 +455,19 @@ time = 80.0
 [node name="Spawner" parent="." instance=ExtResource("4_sie2h")]
 position = Vector2(67, -9)
 
-[node name="Grapple" parent="." instance=ExtResource("5_yvm5f")]
+[node name="Grapple" parent="." instance=ExtResource("5_y5hrd")]
 position = Vector2(1027, -223)
 
-[node name="Grapple2" parent="." instance=ExtResource("5_yvm5f")]
+[node name="Grapple2" parent="." instance=ExtResource("5_y5hrd")]
 position = Vector2(1541, -249)
 
-[node name="Grapple3" parent="." instance=ExtResource("5_yvm5f")]
+[node name="Grapple3" parent="." instance=ExtResource("5_y5hrd")]
 position = Vector2(2282, -345)
 
-[node name="Grapple5" parent="." instance=ExtResource("5_yvm5f")]
+[node name="Grapple5" parent="." instance=ExtResource("5_y5hrd")]
 position = Vector2(5953, -410)
 
-[node name="Grapple4" parent="." instance=ExtResource("5_yvm5f")]
+[node name="Grapple4" parent="." instance=ExtResource("5_y5hrd")]
 position = Vector2(5306, -401)
 
 [node name="Zipline" parent="." instance=ExtResource("6_qon8c")]
@@ -482,7 +482,8 @@ rotation = 0.715585
 scale = Vector2(2.185, 1)
 acceleration = 1.3
 
-[node name="Grapple6" parent="." instance=ExtResource("5_yvm5f")]
+
+[node name="Grapple6" parent="." instance=ExtResource("5_y5hrd")]
 position = Vector2(8211, -271)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
