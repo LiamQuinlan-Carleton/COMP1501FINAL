@@ -69,7 +69,7 @@ text = "0
 label_settings = SubResource("LabelSettings_g6x12")
 horizontal_alignment = 1
 
-[node name="stats" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+[node name="Attempts_taken" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "m a n  h o r s e"
 label_settings = SubResource("LabelSettings_fidhv")

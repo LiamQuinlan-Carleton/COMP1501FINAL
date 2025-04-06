@@ -373,7 +373,7 @@ func _input(event: InputEvent) -> void:
 				await get_tree().create_timer(1.51).timeout
 				current_ammo = 6
 	if event.is_action_pressed("Reset"): # For quick resets
-		get_tree().reload_current_scene()
+		call_deferred("reset_player")
 
 func _on_jump_length_timeout() -> void:
 	is_jumping = false
@@ -431,4 +431,5 @@ func _on_death_collisions_died() -> void:
 	call_deferred("reset_player")
 
 func reset_player():
+	Global.attempts_taken += 1
 	get_tree().reload_current_scene()

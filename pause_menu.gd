@@ -33,6 +33,7 @@ func _on_resume_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	resume()
+	Global.attempts_taken += 1
 	get_tree().reload_current_scene()
 
 
