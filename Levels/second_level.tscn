@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dppagxjo7btbq" path="res://end_screen.tscn" id="6_m63de"]
 [ext_resource type="PackedScene" uid="uid://b6mi2a647dqyv" path="res://pause_menu.tscn" id="7_br1qf"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6yn7b"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jobr5"]
 texture = ExtResource("3_ss3fm")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -37,7 +37,7 @@ texture = ExtResource("3_ss3fm")
 1:3/0/terrain_set = 0
 1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nr6rj"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6pn4"]
 texture = ExtResource("2_xytki")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -416,7 +416,7 @@ texture = ExtResource("2_xytki")
 11:3/0/terrains_peering_bit/bottom_side = 0
 11:3/0/terrains_peering_bit/left_side = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_36x21"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7w6vv"]
 texture = ExtResource("2_xytki")
 12:0/0 = 0
 12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -6, -8, -6, -8, -6, -2, -8, -2)
@@ -431,11 +431,9 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
-sources/1 = SubResource("TileSetAtlasSource_nr6rj")
-sources/0 = SubResource("TileSetAtlasSource_6yn7b")
-sources/2 = SubResource("TileSetAtlasSource_36x21")
-[sub_resource type="LabelSettings" id="LabelSettings_ftpno"]
-font_size = 25
+sources/1 = SubResource("TileSetAtlasSource_d6pn4")
+sources/0 = SubResource("TileSetAtlasSource_jobr5")
+sources/2 = SubResource("TileSetAtlasSource_7w6vv")
 
 [node name="Second Level" type="Node"]
 

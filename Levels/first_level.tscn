@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dsb33ibrbu2tw" path="res://grapple.tscn" id="10_f1gyt"]
 [ext_resource type="PackedScene" uid="uid://biubdrqr3flbw" path="res://end_point.tscn" id="11_ft73y"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2rx0l"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g6epq"]
 texture = ExtResource("2_xey84")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -39,7 +39,7 @@ texture = ExtResource("2_xey84")
 1:3/0/terrain_set = 0
 1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8tfpt"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dowyd"]
 texture = ExtResource("2_6m3ab")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -437,8 +437,8 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
-sources/1 = SubResource("TileSetAtlasSource_8tfpt")
-sources/0 = SubResource("TileSetAtlasSource_2rx0l")
+sources/1 = SubResource("TileSetAtlasSource_dowyd")
+sources/0 = SubResource("TileSetAtlasSource_g6epq")
 
 [node name="First Level" type="Node"]
 
