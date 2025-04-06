@@ -1241,7 +1241,8 @@ script = ExtResource("2_x68m0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_83j4p")
-animation = &"Run Left"
+animation = &"Wall Slide Shoot Left"
+frame_progress = 0.0142246
 
 [node name="Upper Collision" type="Area2D" parent="."]
 script = ExtResource("8_q7q8a")

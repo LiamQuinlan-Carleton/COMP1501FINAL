@@ -434,8 +434,6 @@ terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
 sources/1 = SubResource("TileSetAtlasSource_nr6rj")
 sources/0 = SubResource("TileSetAtlasSource_6yn7b")
 sources/2 = SubResource("TileSetAtlasSource_36x21")
-[sub_resource type="LabelSettings" id="LabelSettings_ftpno"]
-font_size = 25
 
 [node name="Second Level" type="Node"]
 
@@ -453,7 +451,7 @@ tile_set = SubResource("TileSet_5177o")
 position = Vector2(7007, 2775)
 
 [node name="end_screen" parent="." instance=ExtResource("6_m63de")]
-time = 40.0
+time = 60.0
 
 [node name="Spawner" parent="." instance=ExtResource("4_ncos6")]
 position = Vector2(67, -9)
