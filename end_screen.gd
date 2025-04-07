@@ -5,8 +5,9 @@ extends Control
 
 @onready var time_taken = $CanvasLayer/PanelContainer/VBoxContainer/Time_left
 @onready var attempts_taken = $CanvasLayer/PanelContainer/VBoxContainer/Attempts_taken
-@onready var l_select_res = load("res://level_select.tscn")
-signal next_level
+@onready var l_select_res = preload("res://level_select.tscn")
+@onready var levels = get_tree().get_nodes_in_group("levelIcons")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,4 +52,8 @@ func _on_return_pressed() -> void:
 
 
 func _on_next_pressed() -> void:
-	next_level.emit()
+	var l_sel = l_select_res.instantiate()
+	var s = levels.size()
+	print(s)
+	print(levels)
+	l_sel._on_next_level(levels, s)

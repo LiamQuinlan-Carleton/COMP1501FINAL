@@ -7,7 +7,7 @@ var can_navigate = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Global.next_level.connect(_on_next_level)
+	print(levels)
 	$PlayerIcon.global_position = levels[Global.current_level].global_position
 
 
@@ -30,10 +30,14 @@ func _process(delta: float) -> void:
 			await get_tree().create_timer(0.5).timeout
 			get_tree().change_scene_to_file(levels[Global.current_level].level_path)
 
-func _on_next_level():
+func _on_next_level(lvls : Array, size : int):
 	print("next lvl signal")
-	if Global.current_level < levels.size() - 1:
+	#if Global.current_level < levels.size() - 1:
+		#Global.attempts_taken = 1
+		#Global.current_level += 1
+		#get_tree().change_scene_to_file(levels[Global.current_level].level_path)
+	if Global.current_level < size - 1:
+		print("hi")
 		Global.attempts_taken = 1
 		Global.current_level += 1
-		get_tree().change_scene_to_file(levels[Global.current_level].level_path)
-	
+		get_tree().change_scene_to_file(lvls[Global.current_level + 1].level_path)
