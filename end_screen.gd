@@ -5,6 +5,8 @@ extends Control
 
 @onready var time_taken = $CanvasLayer/PanelContainer/VBoxContainer/Time_left
 @onready var attempts_taken = $CanvasLayer/PanelContainer/VBoxContainer/Attempts_taken
+@onready var l_select_res = load("res://level_select.tscn")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -49,4 +51,4 @@ func _on_return_pressed() -> void:
 
 
 func _on_next_pressed() -> void:
-	pass # Replace with function body.
+	Global.next_level.emit()

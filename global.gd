@@ -4,11 +4,15 @@ extends Node2D
 signal shoot
 #Signal emitted when an enemy shoots
 signal enemy_shoot
+#Signal for moving to next level
+signal next_level
 
 #Globally tracks player's current global position
 var player_position = Vector2(0,0)
 #Globally tracks player's current attempts taken
 var attempts_taken : int = 1
+#Globally tracks current level
+var current_level : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
