@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_ekibr"]
 [ext_resource type="Texture2D" uid="uid://d25jysgwcmlwo" path="res://Art/TileSets/slideTileset.png" id="2_pxplq"]
 [ext_resource type="Texture2D" uid="uid://1eumra722j5d" path="res://Art/TileSets/buildingTileset.png" id="3_8ol30"]
-[ext_resource type="PackedScene" uid="uid://biubdrqr3flbw" path="res://end_point.tscn" id="4_55t6r"]
+[ext_resource type="PackedScene" path="res://end_point.tscn" id="4_55t6r"]
 [ext_resource type="PackedScene" uid="uid://bjv4ayd50t6r0" path="res://enemy.tscn" id="4_voskm"]
 [ext_resource type="PackedScene" uid="uid://dppagxjo7btbq" path="res://end_screen.tscn" id="5_81ejf"]
 [ext_resource type="PackedScene" uid="uid://dsb33ibrbu2tw" path="res://grapple.tscn" id="5_jv50f"]
