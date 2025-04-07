@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://7vyw80euf8ct"]
+[gd_scene load_steps=19 format=4 uid="uid://7vyw80euf8ct"]
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_q4ttp"]
 [ext_resource type="Texture2D" uid="uid://1eumra722j5d" path="res://Art/TileSets/buildingTileset.png" id="2_6m3ab"]
@@ -458,7 +458,7 @@ tile_map_data = PackedByteArray("AAAdACUAAQABAAAAAAAeACUAAQABAAAAAAAfACUAAQABAAA
 tile_set = SubResource("TileSet_j570n")
 
 [node name="end_point" parent="." instance=ExtResource("11_ft73y")]
-position = Vector2(7003, 988)
+position = Vector2(437, 654)
 
 [node name="end_screen" parent="." instance=ExtResource("5_2ovfp")]
 time = 600.0
