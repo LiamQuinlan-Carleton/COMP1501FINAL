@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://7vyw80euf8ct"]
+[gd_scene load_steps=18 format=4 uid="uid://7vyw80euf8ct"]
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_q4ttp"]
 [ext_resource type="Texture2D" uid="uid://1eumra722j5d" path="res://Art/TileSets/buildingTileset.png" id="2_6m3ab"]
@@ -8,7 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://dppagxjo7btbq" path="res://end_screen.tscn" id="5_2ovfp"]
 [ext_resource type="PackedScene" uid="uid://b6mi2a647dqyv" path="res://pause_menu.tscn" id="7_6x4jh"]
 [ext_resource type="PackedScene" uid="uid://wmir60b8tbjr" path="res://death_collisions.tscn" id="7_di4xb"]
+[ext_resource type="Texture2D" uid="uid://dhnnh8qy21etj" path="res://Art/Background Layers/parallax0.png" id="10_ofcsx"]
 [ext_resource type="PackedScene" uid="uid://biubdrqr3flbw" path="res://end_point.tscn" id="11_ft73y"]
+[ext_resource type="Texture2D" uid="uid://dtmrs6sdsy84i" path="res://Art/Background Layers/parallax1.png" id="11_h31bs"]
+[ext_resource type="Texture2D" uid="uid://b34jrtfdaio7a" path="res://Art/Background Layers/parallax4.png" id="11_n8506"]
+[ext_resource type="Texture2D" uid="uid://b1sqjw87xrvrp" path="res://Art/Background Layers/parallax2.png" id="12_u7ifg"]
+[ext_resource type="Texture2D" uid="uid://c5d61un3roa2y" path="res://Art/Background Layers/parallax3.png" id="13_brwf8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g6epq"]
 texture = ExtResource("2_xey84")
@@ -520,5 +525,45 @@ offset_bottom = 375.0
 text = "If you run out of ammo your revolver will automatically reload.
  But if you ever want to manually press 'R'"
 horizontal_alignment = 1
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, -3281)
+scale = Vector2(4.64556, 4.64556)
+texture = ExtResource("10_ofcsx")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(3349.8, 2983)
+scale = Vector2(4.65111, 4.65111)
+texture = ExtResource("11_n8506")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("11_h31bs")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("12_u7ifg")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 1)
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("13_brwf8")
+centered = false
 
 [connection signal="died" from="Death Collisions" to="Player" method="_on_death_collisions_died"]

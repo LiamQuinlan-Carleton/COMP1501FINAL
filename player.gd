@@ -388,7 +388,11 @@ func _input(event: InputEvent) -> void:
 			can_shoot = false
 			ammo.play("Reload")
 			ammo.frame = current_ammo * 4
-			await get_tree().create_timer((6-current_ammo)*0.25+0.01).timeout
+			sfx.stream = reload
+			for i in (6-current_ammo):
+				sfx.play()
+				await get_tree().create_timer(0.18).timeout
+			await get_tree().create_timer((6-current_ammo)*0.07+0.01).timeout
 			current_ammo = 6
 			can_shoot = true
 	#Handle quick reset input
