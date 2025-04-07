@@ -545,3 +545,6 @@ motion_mirroring = Vector2(1440, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 texture = ExtResource("15_k332c")
 centered = false
+
+[connection signal="died" from="Death Collisions" to="Player" method="_on_death_collisions_died"]
+[connection signal="died" from="Death Collisions2" to="Player" method="_on_death_collisions_died"]

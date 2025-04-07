@@ -445,7 +445,7 @@ sources/0 = SubResource("TileSetAtlasSource_ohicm")
 [node name="Level 6" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_vbuur")]
-position = Vector2(-13452, 5290)
+position = Vector2(87, 62)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -529,3 +529,6 @@ motion_mirroring = Vector2(1440, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
 texture = ExtResource("13_8paw6")
 centered = false
+
+[connection signal="died" from="Death Collisions" to="Player" method="_on_death_collisions_died"]
+[connection signal="died" from="Death Collisions2" to="Player" method="_on_death_collisions_died"]
