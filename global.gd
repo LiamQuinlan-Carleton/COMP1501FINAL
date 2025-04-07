@@ -4,8 +4,6 @@ extends Node2D
 signal shoot
 #Signal emitted when an enemy shoots
 signal enemy_shoot
-#Signal for moving to next level
-signal next_level
 
 #Globally tracks player's current global position
 var player_position = Vector2(0,0)

@@ -14,7 +14,7 @@ config/name="COMP1501FINAL"
 run/main_scene="res://start_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
-boot_splash/bg_color=Color(0.298788, 0.441888, 0.893813, 1)
+boot_splash/image="res://Art/Other Stuff/Splash.png"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -26,7 +26,12 @@ Global="*res://global.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
+window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://Art/Other Stuff/crosshair.png"
+
+[global_group]
+
+levelIcons=""
 
 [input]
 

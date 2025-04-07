@@ -458,7 +458,7 @@ tile_map_data = PackedByteArray("AAAdACUAAQABAAAAAAAeACUAAQABAAAAAAAfACUAAQABAAA
 tile_set = SubResource("TileSet_j570n")
 
 [node name="end_point" parent="." instance=ExtResource("11_ft73y")]
-position = Vector2(7003, 988)
+position = Vector2(6996, 989)
 
 [node name="end_screen" parent="." instance=ExtResource("5_2ovfp")]
 time = 600.0
