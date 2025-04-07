@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dgk20n2sknxtq"]
+[gd_scene load_steps=14 format=4 uid="uid://dgk20n2sknxtq"]
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_8h118"]
 [ext_resource type="PackedScene" uid="uid://c8j55ah1v7fy2" path="res://spawner.tscn" id="2_a6jqe"]
@@ -456,9 +456,6 @@ time = 40.0
 
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource("6_weli4")]
 
-[node name="Spawner" parent="CanvasLayer" instance=ExtResource("2_a6jqe")]
-position = Vector2(-3, -382)
-
 [node name="Enemy" parent="." instance=ExtResource("5_o01sh")]
 position = Vector2(1237, -228)
 
@@ -485,3 +482,6 @@ scale = Vector2(250, 25)
 [node name="Death Collisions3" parent="." instance=ExtResource("6_5hatg")]
 position = Vector2(9226, 3101)
 scale = Vector2(250, 25)
+
+[node name="Spawner" parent="." instance=ExtResource("2_a6jqe")]
+position = Vector2(-3, -382)

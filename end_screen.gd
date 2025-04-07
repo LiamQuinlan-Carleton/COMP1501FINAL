@@ -36,7 +36,7 @@ func _on_timer_timeout() -> void:
 	call_deferred("reset_scene")
 
 func reset_scene():
-	Global.attempts_taken += 1
+	Global.attempts_taken = 1
 	get_tree().reload_current_scene()
 
 

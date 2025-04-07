@@ -372,7 +372,17 @@ func _input(event: InputEvent) -> void:
 				ammo.play("Reload")
 				await get_tree().create_timer(1.51).timeout
 				current_ammo = 6
-	if event.is_action_pressed("Reset"): # For quick resets
+	#Handle reload input
+	if event.is_action_pressed("Reload"):
+		if can_shoot and current_ammo > 0:
+			can_shoot = false
+			ammo.play("Reload")
+			ammo.frame = current_ammo * 4
+			await get_tree().create_timer((6-current_ammo)*0.25+0.01).timeout
+			current_ammo = 6
+			can_shoot = true
+	#Handle quick reset input
+	if event.is_action_pressed("Reset"):
 		call_deferred("reset_player")
 
 func _on_jump_length_timeout() -> void:
