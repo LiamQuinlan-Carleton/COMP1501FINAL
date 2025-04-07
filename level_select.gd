@@ -10,7 +10,6 @@ func _ready() -> void:
 	print(levels)
 	$PlayerIcon.global_position = levels[Global.current_level].global_position
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Left") and Global.current_level > 0 and can_navigate:
@@ -29,20 +28,6 @@ func _process(delta: float) -> void:
 			can_navigate = false
 			await get_tree().create_timer(0.5).timeout
 			get_tree().change_scene_to_file(levels[Global.current_level].level_path)
-
-func _on_next_level(lvls : Array, size : int):
-	print("next lvl signal")
-	#if Global.current_level < levels.size() - 1:
-		#Global.attempts_taken = 1
-		#Global.current_level += 1
-		#get_tree().change_scene_to_file(levels[Global.current_level].level_path)
-	if Global.current_level < size - 1:
-		print("hi")
-		Global.attempts_taken = 1
-		Global.current_level += 1
-		get_tree().change_scene_to_file(levels[Global.current_level].level_path)
-	
-
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
