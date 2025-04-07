@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://7vyw80euf8ct"]
+[gd_scene load_steps=14 format=4 uid="uid://7vyw80euf8ct"]
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_q4ttp"]
 [ext_resource type="Texture2D" uid="uid://1eumra722j5d" path="res://Art/TileSets/buildingTileset.png" id="2_6m3ab"]
@@ -438,6 +438,8 @@ terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
 sources/1 = SubResource("TileSetAtlasSource_dowyd")
 sources/0 = SubResource("TileSetAtlasSource_g6epq")
 
+[sub_resource type="LabelSettings" id="LabelSettings_sgrfx"]
+
 [node name="First Level" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_q4ttp")]
@@ -510,6 +512,7 @@ offset_bottom = 569.0
 text = "See that timer at the top of the screen? 
 In an actual mission you have that long
  to get to the end. If you don't you will die..."
+label_settings = SubResource("LabelSettings_sgrfx")
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="."]
