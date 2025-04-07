@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cx5a0d7crkxuy"]
+[gd_scene load_steps=19 format=4 uid="uid://dpm78lyfcgnlq"]
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_hgaiu"]
 [ext_resource type="Texture2D" uid="uid://d25jysgwcmlwo" path="res://Art/TileSets/slideTileset.png" id="2_rwbst"]
@@ -455,7 +455,7 @@ tile_set = SubResource("TileSet_826ol")
 position = Vector2(8804, -228)
 
 [node name="end_screen" parent="." instance=ExtResource("5_e1hdg")]
-time = 600.0
+time = 75.0
 
 [node name="Spawner" parent="." instance=ExtResource("6_dy8cn")]
 position = Vector2(67, -9)

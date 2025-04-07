@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dywwc0p7d5o15"]
+[gd_scene load_steps=17 format=4 uid="uid://dgk20n2sknxtq"]
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_8h118"]
 [ext_resource type="Texture2D" uid="uid://d25jysgwcmlwo" path="res://Art/TileSets/slideTileset.png" id="3_ksqr4"]
@@ -493,8 +493,8 @@ position = Vector2(0, 3045)
 motion_mirroring = Vector2(1440, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(0, -3281)
-scale = Vector2(4.64556, 4.64556)
+position = Vector2(0, -4653)
+scale = Vector2(4.63681, 6.17)
 texture = ExtResource("10_5w4o4")
 centered = false
 
