@@ -259,7 +259,7 @@ func _physics_process(delta: float) -> void:
 		var query = PhysicsRayQueryParameters2D.create(position, position + (get_global_mouse_position() - position).normalized() * grapple_distance)
 		query.collide_with_areas = true
 		query.collide_with_bodies = false
-		query.collision_mask = 2
+		query.collision_mask = 4
 		var result = space_state.intersect_ray(query)
 		if result:
 			has_grapple = true
@@ -269,7 +269,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("Right Click") and has_grapple:
 		velocity += grapple_force * Vector2(grapple_point - position).normalized()
 		grapple_line.set_point_position(0, Vector2(0,0))
-		grapple_line.set_point_position(1, grapple_point - position)
+		grapple_line.set_point_position(1, grapple_point - (position + velocity * delta))
 	if Input.is_action_just_released("Right Click"):
 		has_grapple = false
 		grapple_line.hide()
