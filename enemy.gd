@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 		animation.play("Shoot Right")
 		animation.frame = current_frame + 1
 	var collider = los.get_collider()
-	if collider == player and global_position.distance_to(player.global_position) <= 300:
+	if collider == player and global_position.distance_to(player.global_position) <= 500:
 		if can_shoot:
 			Global.enemy_shoot.emit(self)
 			can_shoot = false

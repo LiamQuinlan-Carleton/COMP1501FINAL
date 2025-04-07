@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://d25jysgwcmlwo" path="res://Art/TileSets/slideTileset.png" id="2_xey84"]
 [ext_resource type="PackedScene" uid="uid://c8j55ah1v7fy2" path="res://spawner.tscn" id="4_aeghy"]
 [ext_resource type="PackedScene" uid="uid://codnqtebakn4" path="res://dummy.tscn" id="5_2bh44"]
-[ext_resource type="PackedScene" path="res://end_screen.tscn" id="5_2ovfp"]
+[ext_resource type="PackedScene" uid="uid://dppagxjo7btbq" path="res://end_screen.tscn" id="5_2ovfp"]
 [ext_resource type="PackedScene" uid="uid://djxscqvgw0uy6" path="res://zipline.tscn" id="6_p4u7b"]
 [ext_resource type="PackedScene" uid="uid://b6mi2a647dqyv" path="res://pause_menu.tscn" id="7_6x4jh"]
 [ext_resource type="PackedScene" uid="uid://wmir60b8tbjr" path="res://death_collisions.tscn" id="7_di4xb"]
 [ext_resource type="PackedScene" uid="uid://dsb33ibrbu2tw" path="res://grapple.tscn" id="10_f1gyt"]
-[ext_resource type="PackedScene" path="res://end_point.tscn" id="11_ft73y"]
+[ext_resource type="PackedScene" uid="uid://biubdrqr3flbw" path="res://end_point.tscn" id="11_ft73y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g6epq"]
 texture = ExtResource("2_xey84")
