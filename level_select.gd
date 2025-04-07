@@ -37,3 +37,7 @@ func _on_next_level():
 		Global.current_level += 1
 		get_tree().change_scene_to_file(levels[Global.current_level].level_path)
 	
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()

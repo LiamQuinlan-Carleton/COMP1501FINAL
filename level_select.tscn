@@ -162,3 +162,12 @@ horizontal_alignment = 1
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_5x4ll")
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1737.0
+offset_right = 1920.0
+offset_bottom = 114.0
+text = "Quit Game"
+
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
