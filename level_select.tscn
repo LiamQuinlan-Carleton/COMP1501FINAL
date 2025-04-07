@@ -19,7 +19,7 @@ offset_top = 525.0
 offset_right = 189.0
 offset_bottom = 589.0
 level_name = "Level 1"
-level_path = "res://Levels/first_level.tscn"
+level_path = "res://Levels/level_1.tscn"
 
 [node name="LevelIcon2" parent="." instance=ExtResource("1_5ppls")]
 offset_left = 308.0
@@ -27,7 +27,7 @@ offset_top = 434.0
 offset_right = 372.0
 offset_bottom = 498.0
 level_name = "Level 2"
-level_path = "res://Levels/second_level.tscn"
+level_path = "res://Levels/level_2.tscn"
 
 [node name="LevelIcon3" parent="." instance=ExtResource("1_5ppls")]
 offset_left = 496.0
@@ -35,7 +35,7 @@ offset_top = 525.0
 offset_right = 560.0
 offset_bottom = 589.0
 level_name = "Level 3"
-level_path = "res://Levels/level_7.tscn"
+level_path = "res://Levels/level_3.tscn"
 
 [node name="LevelIcon4" parent="." instance=ExtResource("1_5ppls")]
 offset_left = 664.0
@@ -43,7 +43,7 @@ offset_top = 418.0
 offset_right = 728.0
 offset_bottom = 482.0
 level_name = "Level 4"
-level_path = "res://third_level.tscn"
+level_path = "res://Levels/level_4.tscn"
 
 [node name="LevelIcon5" parent="." instance=ExtResource("1_5ppls")]
 offset_left = 836.0
@@ -51,7 +51,7 @@ offset_top = 525.0
 offset_right = 900.0
 offset_bottom = 589.0
 level_name = "Level 5"
-level_path = "res://Levels/level_4.tscn"
+level_path = "res://Levels/level_5.tscn"
 
 [node name="LevelIcon6" parent="." instance=ExtResource("1_5ppls")]
 offset_left = 1039.0
@@ -59,7 +59,7 @@ offset_top = 414.0
 offset_right = 1103.0
 offset_bottom = 478.0
 level_name = "Level 6"
-level_path = "res://Levels/level_5.tscn"
+level_path = "res://Levels/level_6.tscn"
 
 [node name="LevelIcon7" parent="." instance=ExtResource("1_5ppls")]
 offset_left = 1209.0
@@ -67,7 +67,7 @@ offset_top = 519.0
 offset_right = 1273.0
 offset_bottom = 583.0
 level_name = "Level 7"
-level_path = "res://Levels/level_6.tscn"
+level_path = "res://Levels/level_7.tscn"
 
 [node name="LevelIcon8" parent="." instance=ExtResource("1_5ppls")]
 offset_left = 1373.0
