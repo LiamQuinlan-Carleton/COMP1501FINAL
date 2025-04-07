@@ -18,6 +18,8 @@ var can_shoot : bool = true #True when player isn't reloading or delayed between
 var current_frame
 #Grab player node
 @onready var player = get_tree().get_root().find_child("Player", true, false)
+#Grab audio sfx node
+@onready var sfx = $SFX
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,6 +43,7 @@ func _process(delta: float) -> void:
 	var collider = los.get_collider()
 	if collider == player and global_position.distance_to(player.global_position) <= 500:
 		if can_shoot:
+			sfx.play()
 			Global.enemy_shoot.emit(self)
 			can_shoot = false
 			shoot_timer.start()

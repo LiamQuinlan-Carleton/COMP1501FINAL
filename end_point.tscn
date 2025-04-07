@@ -1,10 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://biubdrqr3flbw"]
 
 [ext_resource type="Script" path="res://end_point.gd" id="1_n5sra"]
+[ext_resource type="Texture2D" uid="uid://df4bio5bax7rg" path="res://Art/Other Stuff/exitflag.png" id="2_ncvaa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hyta"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_5i42w"]
 
 [node name="end_point" type="Node2D"]
 script = ExtResource("1_n5sra")
@@ -16,9 +15,9 @@ position = Vector2(0, -50)
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_1hyta")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(0, -50)
-scale = Vector2(100, 100)
-mesh = SubResource("QuadMesh_5i42w")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ncvaa")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

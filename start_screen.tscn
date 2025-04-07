@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://da0gkvfsiouct" path="res://Art/Other Stuff/title-Sheet.png" id="3_yk1lg"]
 [ext_resource type="AudioStream" uid="uid://cah2hsedpouba" path="res://Audio/titleshots.mp3" id="4_md0bm"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wj5kf"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nptuk"]
 texture = ExtResource("2_c4ih5")
 0:0/0 = 0
 1:0/0 = 0
@@ -59,7 +59,7 @@ texture = ExtResource("2_c4ih5")
 11:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_n8dtu"]
-sources/0 = SubResource("TileSetAtlasSource_wj5kf")
+sources/0 = SubResource("TileSetAtlasSource_nptuk")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sacs8"]
 atlas = ExtResource("3_yk1lg")
@@ -132,7 +132,7 @@ offset_top = 800.0
 offset_right = 970.0
 offset_bottom = 823.0
 scale = Vector2(2, 2)
-text = "Press 'space' to start"
+text = "Press [Space] to start"
 horizontal_alignment = 1
 
 [node name="Title" type="AnimatedSprite2D" parent="."]

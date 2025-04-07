@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d25jysgwcmlwo" path="res://Art/TileSets/slideTileset.png" id="2_4thtl"]
 [ext_resource type="Texture2D" uid="uid://1eumra722j5d" path="res://Art/TileSets/buildingTileset.png" id="3_dwom4"]
 [ext_resource type="PackedScene" uid="uid://dsb33ibrbu2tw" path="res://grapple.tscn" id="4_0wdqq"]
-[ext_resource type="PackedScene" path="res://end_point.tscn" id="4_2lda0"]
+[ext_resource type="PackedScene" uid="uid://biubdrqr3flbw" path="res://end_point.tscn" id="4_2lda0"]
 [ext_resource type="PackedScene" uid="uid://c8j55ah1v7fy2" path="res://spawner.tscn" id="5_0kuub"]
 [ext_resource type="PackedScene" uid="uid://dppagxjo7btbq" path="res://end_screen.tscn" id="5_xfgk0"]
 [ext_resource type="PackedScene" uid="uid://bjv4ayd50t6r0" path="res://enemy.tscn" id="6_4lam6"]
@@ -448,7 +448,7 @@ tile_map_data = PackedByteArray("AAARABEAAQAEAAIAAAARABAAAQABAAEAAAARAA8AAQABAAE
 tile_set = SubResource("TileSet_rjfyt")
 
 [node name="end_point" parent="." instance=ExtResource("4_2lda0")]
-position = Vector2(11199, -1287)
+position = Vector2(11199, -1284)
 
 [node name="end_screen" parent="." instance=ExtResource("5_xfgk0")]
 time = 75.0

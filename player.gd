@@ -57,6 +57,10 @@ var current_frame : int
 var update_frame : bool = false
 #Grab player collisionshape
 @onready var player_hitbox = $CollisionShape2D
+#Grab audio sfx node
+@onready var sfx = $SFX
+@onready var gunshot = preload("res://Audio/gunshot.mp3")
+@onready var reload = preload("res://Audio/reload.mp3")
 
 #Zipline variables
 var in_zipline_area = false
@@ -329,6 +333,8 @@ func _input(event: InputEvent) -> void:
 			Global.shoot.emit()
 			shoot_timer.start(shoot_cooldown)
 			current_ammo -= 1
+			sfx.stream = gunshot
+			sfx.play()
 			if is_on_floor() and velocity.x == 0:
 				animation.play("Idle Shoot")
 				animation.frame = current_frame + 1
@@ -370,7 +376,11 @@ func _input(event: InputEvent) -> void:
 			ammo.frame = 24 - current_ammo * 4
 			if current_ammo == 0:
 				ammo.play("Reload")
-				await get_tree().create_timer(1.51).timeout
+				sfx.stream = reload
+				for i in 6:
+					sfx.play()
+					await get_tree().create_timer(0.18).timeout
+				await get_tree().create_timer(0.43).timeout
 				current_ammo = 6
 	#Handle reload input
 	if event.is_action_pressed("Reload"):
