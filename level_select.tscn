@@ -35,7 +35,7 @@ offset_top = 525.0
 offset_right = 560.0
 offset_bottom = 589.0
 level_name = "Level 3"
-level_path = "res://Levels/third_level.tscn"
+level_path = "res://third_level.tscn"
 
 [node name="LevelIcon4" parent="." instance=ExtResource("1_5ppls")]
 offset_left = 664.0
