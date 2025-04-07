@@ -438,7 +438,7 @@ sources/2 = SubResource("TileSetAtlasSource_s5okv")
 [node name="Third Level" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_ubsk3")]
-position = Vector2(1246, -184)
+position = Vector2(-330, 6)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -471,9 +471,10 @@ position = Vector2(5953, -410)
 position = Vector2(5306, -401)
 
 [node name="Zipline" parent="." instance=ExtResource("6_qon8c")]
-position = Vector2(3548, -265)
+position = Vector2(3591, -242)
 rotation = 0.698132
 scale = Vector2(3.465, 1)
+speed = 750
 acceleration = 1.3
 
 [node name="Zipline2" parent="." instance=ExtResource("6_qon8c")]
@@ -488,3 +489,28 @@ position = Vector2(8211, -271)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource("9_puvgw")]
+
+[node name="Grappling Point" type="Label" parent="."]
+offset_left = 562.0
+offset_top = -247.0
+offset_right = 948.0
+offset_bottom = -198.0
+text = "This is a grappling point, 
+to hook on aim at it (or past it) and hold right click"
+horizontal_alignment = 1
+
+[node name="Slingshot" type="Label" parent="."]
+offset_left = 1905.0
+offset_top = -277.0
+offset_right = 2200.0
+offset_bottom = -228.0
+text = "You can even use it to propel yourself,
+ like a slingshot!"
+horizontal_alignment = 1
+
+[node name="Zipline3" type="Label" parent="."]
+offset_left = 2851.0
+offset_top = -628.0
+offset_right = 3067.0
+offset_bottom = -599.0
+text = "Hold shift to use the zipline!"
