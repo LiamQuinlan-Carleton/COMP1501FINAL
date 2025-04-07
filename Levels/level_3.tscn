@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cx5a0d7crkxuy"]
+[gd_scene load_steps=19 format=4 uid="uid://cx5a0d7crkxuy"]
 
 [ext_resource type="PackedScene" uid="uid://bnlswq05iqbuc" path="res://Player.tscn" id="1_hgaiu"]
 [ext_resource type="Texture2D" uid="uid://d25jysgwcmlwo" path="res://Art/TileSets/slideTileset.png" id="2_rwbst"]
@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://dsb33ibrbu2tw" path="res://grapple.tscn" id="7_q4hom"]
 [ext_resource type="PackedScene" uid="uid://djxscqvgw0uy6" path="res://zipline.tscn" id="8_j8w0k"]
 [ext_resource type="PackedScene" uid="uid://b6mi2a647dqyv" path="res://pause_menu.tscn" id="9_xymom"]
+[ext_resource type="Texture2D" uid="uid://dhnnh8qy21etj" path="res://Art/Background Layers/parallax0.png" id="10_pnl6q"]
+[ext_resource type="Texture2D" uid="uid://b34jrtfdaio7a" path="res://Art/Background Layers/parallax4.png" id="11_r2e6d"]
+[ext_resource type="Texture2D" uid="uid://dtmrs6sdsy84i" path="res://Art/Background Layers/parallax1.png" id="12_n5b2w"]
+[ext_resource type="Texture2D" uid="uid://b1sqjw87xrvrp" path="res://Art/Background Layers/parallax2.png" id="13_kewig"]
+[ext_resource type="Texture2D" uid="uid://c5d61un3roa2y" path="res://Art/Background Layers/parallax3.png" id="14_yhnef"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vqgin"]
 texture = ExtResource("2_rwbst")
@@ -514,3 +519,47 @@ offset_top = -628.0
 offset_right = 3067.0
 offset_bottom = -599.0
 text = "Hold shift to use the zipline!"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -687)
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, -3281)
+scale = Vector2(4.64556, 4.64556)
+texture = ExtResource("10_pnl6q")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(3349.8, 2983)
+scale = Vector2(4.65111, 4.65111)
+texture = ExtResource("11_r2e6d")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -687)
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("12_n5b2w")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -687)
+motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("13_kewig")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -687)
+motion_scale = Vector2(0.8, 1)
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("14_yhnef")
+centered = false
