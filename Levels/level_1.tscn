@@ -443,6 +443,8 @@ terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
 sources/1 = SubResource("TileSetAtlasSource_dowyd")
 sources/0 = SubResource("TileSetAtlasSource_g6epq")
 
+[sub_resource type="LabelSettings" id="LabelSettings_sgrfx"]
+
 [node name="First Level" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_q4ttp")]
@@ -515,6 +517,7 @@ offset_bottom = 569.0
 text = "See that timer at the top of the screen? 
 In an actual mission you have that long
  to get to the end. If you don't you will die..."
+label_settings = SubResource("LabelSettings_sgrfx")
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="."]
