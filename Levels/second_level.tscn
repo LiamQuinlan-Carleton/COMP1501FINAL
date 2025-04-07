@@ -480,4 +480,11 @@ offset_bottom = 23.0
 [node name="pause_menu" parent="CanvasLayer" instance=ExtResource("7_br1qf")]
 metadata/_edit_use_anchors_ = true
 
+[node name="Label2" type="Label" parent="."]
+offset_left = 189.0
+offset_top = -68.0
+offset_right = 445.0
+offset_bottom = -45.0
+text = "To quick restart anytime press '1'"
+
 [connection signal="died" from="Death Collisions" to="Player" method="_on_death_collisions_died"]
